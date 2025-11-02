@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ChopChop - Make every group expense effortless. Split bills without the hassle, confusion, or endless calculations.">
+  <title>ChopChop - Splitting bills, made simple</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__container">
+      <img src="logo.png" alt="ChopChop logo" class="header__logo">
+      <button class="header__menu-btn" aria-label="Open menu" aria-expanded="false">
+        <img src="hamburger-menu.svg" alt="" class="header__menu-icon">
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Menu Overlay -->
+  <div class="menu-overlay" aria-hidden="true">
+    <div class="menu-overlay__content">
+      <div class="menu-overlay__header">
+        <img src="logo.png" alt="ChopChop logo" class="menu-overlay__logo">
+        <button class="menu-overlay__close-btn" aria-label="Close menu">
+          <img src="close.svg" alt="" class="menu-overlay__close-icon">
+        </button>
+      </div>
+      <!-- Navigation items can be added here in the future -->
+      <nav class="menu-overlay__nav">
+        <!-- Navigation links will go here -->
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <main class="hero">
+    <div class="hero__container">
+      <img src="app-icon.png" alt="ChopChop app icon" class="hero__app-icon">
+
+      <h1 class="hero__headline">Splitting bills, made simple</h1>
+
+      <p class="hero__description">
+        Make every group expense effortless. With ChopChop, you'll always know who owes what—without the hassle, confusion, or endless calculations.
+      </p>
+
+      <div class="hero__download-buttons">
+        <a href="#" class="hero__download-link" aria-label="Download on the App Store">
+          <img src="app-store.png" alt="Download on the App Store" class="hero__download-img">
+        </a>
+
+        <p class="hero__download-divider">or</p>
+
+        <a href="#" class="hero__download-link" aria-label="Get it on Google Play">
+          <img src="google-play.png" alt="Get it on Google Play" class="hero__download-img">
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- How it Works Section -->
+  <section class="how-it-works">
+    <div class="how-it-works__container">
+      <h2 class="how-it-works__main-title">How it works</h2>
+
+      <div class="how-it-works__feature">
+        <h3 class="how-it-works__feature-title">
+          Create groups
+          <span class="how-it-works__underline"></span>
+        </h3>
+
+        <p class="how-it-works__feature-description">
+          Set up a group for friends, family, or colleagues and keep all shared expenses in one place.
+        </p>
+
+        <div class="how-it-works__mockups">
+          <div class="how-it-works__mockup how-it-works__mockup--left">
+            <img src="mockups/create-group-mockup-left.png" alt="Create group interface - left view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--center">
+            <img src="mockups/create-group-mockup-center.png" alt="Create group interface - center view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--right">
+            <img src="mockups/create-group-mockup-right.png" alt="Create group interface - right view" class="how-it-works__mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Invite Friends Feature -->
+      <div class="how-it-works__feature how-it-works__feature--two-mockups">
+        <h3 class="how-it-works__feature-title">
+          Invite friends
+          <span class="how-it-works__underline"></span>
+        </h3>
+
+        <p class="how-it-works__feature-description">
+          Invite others using QR code or link and start sharing expenses in seconds.
+        </p>
+
+        <div class="how-it-works__mockups how-it-works__mockups--two">
+          <div class="how-it-works__mockup how-it-works__mockup--left-dual">
+            <img src="mockups/invite-friends-mockup-left.png" alt="Invite friends interface - left view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--right-dual">
+            <img src="mockups/invite-friends-mockup-center.png" alt="Invite friends interface - right view" class="how-it-works__mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Transactions Feature -->
+      <div class="how-it-works__feature how-it-works__feature--three-mockups">
+        <h3 class="how-it-works__feature-title">
+          Add transactions
+          <span class="how-it-works__underline"></span>
+        </h3>
+
+        <p class="how-it-works__feature-description">
+          Record who paid what with multiple currencies and always stay on top of your payments.
+        </p>
+
+        <div class="how-it-works__mockups how-it-works__mockups--three">
+          <div class="how-it-works__mockup how-it-works__mockup--left-cascade">
+            <img src="mockups/add-transactions-mockup-left.png" alt="Add transactions interface - left view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--center-cascade">
+            <img src="mockups/add-transactions-mockup-center.png" alt="Add transactions interface - center view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--right-cascade">
+            <img src="mockups/add-transactions-mockup-right.png" alt="Add transactions interface - right view" class="how-it-works__mockup-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Split the Bills Feature -->
+      <div class="how-it-works__feature how-it-works__feature--bottom-up">
+        <h3 class="how-it-works__feature-title">
+          Split the bills
+          <span class="how-it-works__underline"></span>
+        </h3>
+
+        <p class="how-it-works__feature-description">
+          ChopChop automatically calculates who owes whom and splits the bill fairly for you.
+        </p>
+
+        <div class="how-it-works__mockups how-it-works__mockups--bottom">
+          <div class="how-it-works__mockup how-it-works__mockup--left-bottom">
+            <img src="mockups/split-the-bills-mockup-left.png" alt="Split bills interface - left view" class="how-it-works__mockup-img">
+          </div>
+          <div class="how-it-works__mockup how-it-works__mockup--right-bottom">
+            <img src="mockups/split-the-bills-mockup-right.png" alt="Split bills interface - right view" class="how-it-works__mockup-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

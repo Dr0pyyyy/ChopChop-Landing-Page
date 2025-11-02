@@ -1,0 +1,878 @@
+/* CSS Custom Properties */
+:root {
+  --color-background: #F2F2F2;
+  --color-text: #2C2C2C;
+  --color-brand: #A057FF;
+  --color-white: #FFFFFF;
+
+  /* 8px system spacing */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+  --spacing-7: 56px;
+  --spacing-8: 64px;
+
+  /* Transitions */
+  --transition-fast: 200ms ease-in-out;
+  --transition-standard: 300ms ease-in-out;
+  --transition-slow: 400ms ease-in-out;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header - Mobile First */
+.header {
+  background-color: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: var(--spacing-3) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  height: var(--spacing-5);
+  width: auto;
+}
+
+.header__menu-btn {
+  min-width: var(--spacing-6);
+  min-height: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+}
+
+.header__menu-btn:focus {
+  outline: none;
+}
+
+.header__menu-icon {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+/* Menu Overlay - Slide-in from right */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white);
+  z-index: 200;
+  transform: translateX(100%);
+  transition: transform var(--transition-standard);
+  overflow-y: auto;
+}
+
+.menu-overlay--active {
+  transform: translateX(0);
+}
+
+.menu-overlay__content {
+  min-height: 100vh;
+  padding: var(--spacing-3);
+}
+
+.menu-overlay__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.menu-overlay__logo {
+  height: var(--spacing-5);
+  width: auto;
+}
+
+.menu-overlay__close-btn {
+  min-width: var(--spacing-6);
+  min-height: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+}
+
+.menu-overlay__close-btn:focus {
+  outline: none;
+}
+
+.menu-overlay__close-icon {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+.menu-overlay__nav {
+  /* Navigation styles will be added when nav items are needed */
+}
+
+/* Hero Section - Mobile First */
+.hero {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.hero__container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero__app-icon {
+  width: 136px; /* 14 * 8px */
+  height: 136px;
+  margin: 0 auto var(--spacing-2); /* 32px */
+  border-radius: var(--spacing-2);
+}
+
+.hero__headline {
+  font-size: 40px; /* 5 * 8px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-3); /* 24px */
+  color: var(--color-text);
+}
+
+.hero__description {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-5); /* 40px */
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.hero__download-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2); /* 16px */
+}
+
+.hero__download-link {
+  display: inline-block;
+  min-height: var(--spacing-6);
+}
+
+.hero__download-link:focus {
+  outline: none;
+}
+
+.hero__download-img {
+  height: var(--spacing-7); /* 48px */
+  width: auto;
+}
+
+.hero__download-divider {
+  font-size: 16px; /* 2 * 8px */
+  color: var(--color-text);
+  opacity: 0.6;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+  .header__container {
+    padding: 0 var(--spacing-5);
+  }
+
+  .header__logo {
+    height: var(--spacing-6);
+  }
+
+  .hero {
+    padding: var(--spacing-3) var(--spacing-5);
+  }
+
+  .hero__container {
+    max-width: 800px;
+  }
+
+  .hero__app-icon {
+    width: 152px; /* 19 * 8px */
+    height: 152px;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .hero__headline {
+    font-size: 64px; /* 8 * 8px */
+    margin-bottom: var(--spacing-3);
+  }
+
+  .hero__description {
+    font-size: 22px;
+    margin-bottom: var(--spacing-5);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__download-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-2);
+  }
+
+  .hero__download-divider {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .hero__download-img {
+    height: var(--spacing-7);
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  .header__container {
+    padding: 0 var(--spacing-7);
+  }
+
+  .header__logo {
+    height: var(--spacing-7);
+  }
+
+  .hero {
+    padding: var(--spacing-4) var(--spacing-6);
+  }
+
+  .hero__container {
+    max-width: 900px;
+  }
+
+  .hero__app-icon {
+    width: 168px; /* 21 * 8px */
+    height: 168px;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .hero__headline {
+    font-size: 72px; /* 9 * 8px */
+    margin-bottom: var(--spacing-3);
+  }
+
+  .hero__description {
+    font-size: 24px; /* 3 * 8px */
+    max-width: 720px;
+    margin-bottom: var(--spacing-5);
+  }
+
+  .hero__download-buttons {
+    gap: var(--spacing-2);
+  }
+
+  .hero__download-divider {
+    font-size: 20px;
+  }
+
+  .hero__download-img {
+    height: var(--spacing-8); /* 64px */
+  }
+}
+
+/* Large Desktop - 1440px and up */
+@media (min-width: 1440px) {
+  .header__container {
+    padding: 0 var(--spacing-8);
+  }
+
+  .header__logo {
+    height: var(--spacing-8);
+  }
+
+  .hero__container {
+    max-width: 1000px;
+  }
+
+  .hero__app-icon {
+    width: 184px; /* 23 * 8px */
+    height: 184px;
+  }
+
+  .hero__headline {
+    font-size: 80px; /* 10 * 8px */
+  }
+
+  .hero__description {
+    font-size: 26px;
+    max-width: 800px;
+  }
+
+  .hero__download-img {
+    height: 72px; /* 9 * 8px */
+  }
+}
+
+/* How it Works Section - Mobile First */
+.how-it-works {
+  background-color: var(--color-background);
+  padding: var(--spacing-8) var(--spacing-3);
+}
+
+.how-it-works__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-it-works__main-title {
+  font-size: 40px; /* 5 * 8px */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  color: var(--color-text);
+}
+
+.how-it-works__feature {
+  text-align: center;
+}
+
+.how-it-works__feature--two-mockups {
+  margin-top: var(--spacing-8);
+}
+
+.how-it-works__feature-title {
+  font-size: 32px; /* 4 * 8px */
+  font-weight: 700;
+  margin-bottom: var(--spacing-3);
+  color: var(--color-text);
+  display: inline-block;
+  position: relative;
+}
+
+.how-it-works__underline {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-brand);
+  border-radius: 2px;
+}
+
+.how-it-works__feature-description {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-6);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.how-it-works__mockups {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: var(--spacing-4) 0;
+  min-height: 360px;
+}
+
+.how-it-works__mockup {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.how-it-works__mockup--center {
+  z-index: 3;
+  opacity: 1;
+}
+
+.how-it-works__mockup--left {
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(0) scale(0.8);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms,
+              opacity 600ms ease 0ms;
+}
+
+.how-it-works__mockup--right {
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(0) scale(0.8);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 150ms,
+              opacity 600ms ease 150ms;
+}
+
+/* Animation active state */
+.how-it-works__feature--animate .how-it-works__mockup--left {
+  opacity: 1;
+  transform: translateX(-96px) scale(0.9) rotate(-8deg);
+}
+
+.how-it-works__feature--animate .how-it-works__mockup--right {
+  opacity: 1;
+  transform: translateX(96px) scale(0.9) rotate(8deg);
+}
+
+.how-it-works__mockup-img {
+  height: 320px; /* 40 * 8px */
+  width: auto;
+  display: block;
+}
+
+/* Two Mockups Animation - Invite Friends */
+.how-it-works__mockups--two {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: var(--spacing-4) 0;
+  min-height: 360px;
+}
+
+.how-it-works__mockups--two .how-it-works__mockup {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Right mockup (starts centered, moves right) */
+.how-it-works__mockup--right-dual {
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms;
+}
+
+/* Left mockup (starts hidden behind right, slides out left) */
+.how-it-works__mockup--left-dual {
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(60px) scale(0.9);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 100ms,
+              opacity 600ms ease 100ms;
+}
+
+/* Animation active state for two mockups */
+.how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--right-dual {
+  transform: translateX(60px);
+}
+
+.how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--left-dual {
+  opacity: 1;
+  transform: translateX(-60px) scale(1) rotate(-5deg);
+}
+
+/* Three Mockups Cascade Animation - Add Transactions */
+.how-it-works__feature--three-mockups {
+  margin-top: var(--spacing-8);
+}
+
+.how-it-works__mockups--three {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: var(--spacing-4) 0;
+  min-height: 360px;
+}
+
+.how-it-works__mockups--three .how-it-works__mockup {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Right mockup (mockup 1) - starts centered, moves right */
+.how-it-works__mockup--right-cascade {
+  z-index: 3;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms,
+              opacity 600ms ease 0ms;
+}
+
+/* Center mockup (mockup 2) - starts hidden behind right */
+.how-it-works__mockup--center-cascade {
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(0) scale(0.85);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 150ms,
+              opacity 600ms ease 150ms;
+}
+
+/* Left mockup (mockup 3) - starts hidden behind center */
+.how-it-works__mockup--left-cascade {
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(0) scale(0.7);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms,
+              opacity 600ms ease 300ms;
+}
+
+/* Animation active state for three mockups cascade */
+.how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
+  transform: translateX(80px) translateY(0) scale(0.9) rotate(8deg);
+}
+
+.how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
+  opacity: 1;
+  transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+}
+
+.how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
+  opacity: 1;
+  transform: translateX(-80px) translateY(64px) scale(0.85) rotate(-8deg);
+}
+
+/* Bottom-Up Animation - Split the Bills */
+.how-it-works__feature--bottom-up {
+  margin-top: var(--spacing-8);
+}
+
+.how-it-works__mockups--bottom {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: var(--spacing-4) 0;
+  min-height: 360px;
+}
+
+.how-it-works__mockups--bottom .how-it-works__mockup {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Right mockup (starts below viewport, slides up first) */
+.how-it-works__mockup--right-bottom {
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(150px) rotate(15deg);
+  transition: transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms,
+              opacity 700ms ease 0ms;
+}
+
+/* Left mockup (starts below viewport, slides up later) */
+.how-it-works__mockup--left-bottom {
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(150px) rotate(-15deg);
+  transition: transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 200ms,
+              opacity 700ms ease 200ms;
+}
+
+/* Animation active state for bottom-up mockups */
+.how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--right-bottom {
+  opacity: 1;
+  transform: translateX(60px) translateY(0) rotate(8deg);
+}
+
+.how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--left-bottom {
+  opacity: 1;
+  transform: translateX(-60px) translateY(0) rotate(-8deg);
+}
+
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+  .how-it-works {
+    padding: var(--spacing-8) var(--spacing-5);
+  }
+
+  .how-it-works__main-title {
+    font-size: 56px; /* 7 * 8px */
+  }
+
+  .how-it-works__feature-title {
+    font-size: 40px; /* 5 * 8px */
+  }
+
+  .how-it-works__underline {
+    bottom: -12px;
+    height: 6px;
+  }
+
+  .how-it-works__feature-description {
+    font-size: 20px;
+    max-width: 700px;
+  }
+
+  .how-it-works__mockups {
+    min-height: 420px;
+  }
+
+  .how-it-works__mockup-img {
+    height: 400px; /* 50 * 8px */
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--left {
+    transform: translateX(-140px) scale(0.9) rotate(-8deg);
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--right {
+    transform: translateX(140px) scale(0.9) rotate(8deg);
+  }
+
+  /* Two mockups - tablet */
+  .how-it-works__mockups--two {
+    min-height: 420px;
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--right-dual {
+    transform: translateX(80px);
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--left-dual {
+    transform: translateX(-80px) scale(1) rotate(-5deg);
+  }
+
+  /* Three mockups - tablet */
+  .how-it-works__mockups--three {
+    min-height: 420px;
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
+    transform: translateX(100px) translateY(0) scale(0.9) rotate(8deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
+    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
+    transform: translateX(-100px) translateY(64px) scale(0.85) rotate(-8deg);
+  }
+
+  /* Bottom-up mockups - tablet */
+  .how-it-works__mockups--bottom {
+    min-height: 420px;
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--right-bottom {
+    transform: translateX(80px) translateY(0) rotate(8deg);
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--left-bottom {
+    transform: translateX(-80px) translateY(0) rotate(-8deg);
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  .how-it-works {
+    padding: var(--spacing-8) var(--spacing-7);
+  }
+
+  .how-it-works__main-title {
+    font-size: 64px; /* 8 * 8px */
+  }
+
+  .how-it-works__feature-title {
+    font-size: 48px; /* 6 * 8px */
+  }
+
+  .how-it-works__feature-description {
+    font-size: 22px;
+    max-width: 800px;
+  }
+
+  .how-it-works__mockups {
+    min-height: 500px;
+  }
+
+  .how-it-works__mockup-img {
+    height: 480px; /* 60 * 8px */
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--left {
+    transform: translateX(-180px) scale(0.9) rotate(-8deg);
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--right {
+    transform: translateX(180px) scale(0.9) rotate(8deg);
+  }
+
+  /* Two mockups - desktop */
+  .how-it-works__mockups--two {
+    min-height: 500px;
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--right-dual {
+    transform: translateX(100px);
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--left-dual {
+    transform: translateX(-100px) scale(1) rotate(-5deg);
+  }
+
+  /* Three mockups - desktop */
+  .how-it-works__mockups--three {
+    min-height: 500px;
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
+    transform: translateX(120px) translateY(0) scale(0.9) rotate(8deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
+    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
+    transform: translateX(-120px) translateY(64px) scale(0.85) rotate(-8deg);
+  }
+
+  /* Bottom-up mockups - desktop */
+  .how-it-works__mockups--bottom {
+    min-height: 500px;
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--right-bottom {
+    transform: translateX(100px) translateY(0) rotate(8deg);
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--left-bottom {
+    transform: translateX(-100px) translateY(0) rotate(-8deg);
+  }
+}
+
+/* Large Desktop - 1440px and up */
+@media (min-width: 1440px) {
+  .how-it-works {
+    padding: var(--spacing-8);
+  }
+
+  .how-it-works__main-title {
+    font-size: 72px; /* 9 * 8px */
+  }
+
+  .how-it-works__feature-title {
+    font-size: 56px; /* 7 * 8px */
+  }
+
+  .how-it-works__feature-description {
+    font-size: 24px;
+  }
+
+  .how-it-works__mockups {
+    min-height: 560px;
+  }
+
+  .how-it-works__mockup-img {
+    height: 520px; /* 65 * 8px */
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--left {
+    transform: translateX(-220px) scale(0.9) rotate(-8deg);
+  }
+
+  .how-it-works__feature--animate .how-it-works__mockup--right {
+    transform: translateX(220px) scale(0.9) rotate(8deg);
+  }
+
+  /* Two mockups - large desktop */
+  .how-it-works__mockups--two {
+    min-height: 560px;
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--right-dual {
+    transform: translateX(120px);
+  }
+
+  .how-it-works__feature--two-mockups.how-it-works__feature--animate .how-it-works__mockup--left-dual {
+    transform: translateX(-120px) scale(1) rotate(-5deg);
+  }
+
+  /* Three mockups - large desktop */
+  .how-it-works__mockups--three {
+    min-height: 560px;
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
+    transform: translateX(140px) translateY(0) scale(0.9) rotate(8deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
+    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+  }
+
+  .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
+    transform: translateX(-140px) translateY(64px) scale(0.85) rotate(-8deg);
+  }
+
+  /* Bottom-up mockups - large desktop */
+  .how-it-works__mockups--bottom {
+    min-height: 560px;
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--right-bottom {
+    transform: translateX(120px) translateY(0) rotate(8deg);
+  }
+
+  .how-it-works__feature--bottom-up.how-it-works__feature--animate .how-it-works__mockup--left-bottom {
+    transform: translateX(-120px) translateY(0) rotate(-8deg);
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Body scroll lock when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
