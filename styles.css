@@ -68,7 +68,7 @@ body::before {
   right: 0;
   width: 100%;
   height: 710vh; /* Large height */
-  background-image: url('background-line.svg');
+  background-image: url('icons/background-line.svg');
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% 100%;
@@ -435,7 +435,8 @@ body::before {
 
 /* Section container */
 .mockups-carousel {
-  width: 100%;
+  width: 120%;
+  margin-left: -7.5%; /* Center the 115% width */
   height: 100vh; /* Full viewport height */
   background: #F2F2F2;
   overflow: hidden;
@@ -452,16 +453,13 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 200px; /* 25 * 8px - larger for smoother fade */
+  height: 120px; /* 15 * 8px */
   background: linear-gradient(to bottom,
-    rgba(242, 242, 242, 1) 0%,
-    rgba(242, 242, 242, 0.98) 15%,
-    rgba(242, 242, 242, 0.92) 30%,
-    rgba(242, 242, 242, 0.8) 45%,
-    rgba(242, 242, 242, 0.6) 60%,
-    rgba(242, 242, 242, 0.35) 75%,
-    rgba(242, 242, 242, 0.15) 88%,
-    rgba(242, 242, 242, 0) 100%);
+    #F2F2F2 0%,
+    rgba(242, 242, 242, 0.9) 25%,
+    rgba(242, 242, 242, 0.6) 50%,
+    rgba(242, 242, 242, 0.3) 75%,
+    transparent 100%);
   z-index: 10;
   pointer-events: none;
 }
@@ -473,16 +471,13 @@ body::before {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px; /* 25 * 8px - larger for smoother fade */
+  height: 120px; /* 15 * 8px */
   background: linear-gradient(to top,
-    rgba(242, 242, 242, 1) 0%,
-    rgba(242, 242, 242, 0.98) 15%,
-    rgba(242, 242, 242, 0.92) 30%,
-    rgba(242, 242, 242, 0.8) 45%,
-    rgba(242, 242, 242, 0.6) 60%,
-    rgba(242, 242, 242, 0.35) 75%,
-    rgba(242, 242, 242, 0.15) 88%,
-    rgba(242, 242, 242, 0) 100%);
+    #F2F2F2 0%,
+    rgba(242, 242, 242, 0.9) 25%,
+    rgba(242, 242, 242, 0.6) 50%,
+    rgba(242, 242, 242, 0.3) 75%,
+    transparent 100%);
   z-index: 10;
   pointer-events: none;
 }
@@ -541,6 +536,16 @@ body::before {
   animation: scroll-down 25s linear infinite;
 }
 
+/* Hide columns 4-9 on mobile/tablet (only show first 3 columns) */
+.mockups-carousel__column--4,
+.mockups-carousel__column--5,
+.mockups-carousel__column--6,
+.mockups-carousel__column--7,
+.mockups-carousel__column--8,
+.mockups-carousel__column--9 {
+  display: none;
+}
+
 /* Optional: pause animation on hover */
 .mockups-carousel__column:hover .mockups-carousel__column-inner {
   animation-play-state: paused;
@@ -580,6 +585,46 @@ body::before {
   .mockups-carousel__mockup {
     max-width: 360px; /* 45 * 8px */
   }
+
+  /* Show all 9 columns on desktop */
+  .mockups-carousel__column--4,
+  .mockups-carousel__column--5,
+  .mockups-carousel__column--6,
+  .mockups-carousel__column--7,
+  .mockups-carousel__column--8,
+  .mockups-carousel__column--9 {
+    display: flex;
+  }
+
+  /* Column 4 - scrolls UP, 18s */
+  .mockups-carousel__column--4 .mockups-carousel__column-inner {
+    animation: scroll-up 18s linear infinite;
+  }
+
+  /* Column 5 - scrolls DOWN, 28s */
+  .mockups-carousel__column--5 .mockups-carousel__column-inner {
+    animation: scroll-down 28s linear infinite;
+  }
+
+  /* Column 6 - scrolls UP, 22s */
+  .mockups-carousel__column--6 .mockups-carousel__column-inner {
+    animation: scroll-up 22s linear infinite;
+  }
+
+  /* Column 7 - scrolls DOWN, 24s */
+  .mockups-carousel__column--7 .mockups-carousel__column-inner {
+    animation: scroll-down 24s linear infinite;
+  }
+
+  /* Column 8 - scrolls UP, 17s */
+  .mockups-carousel__column--8 .mockups-carousel__column-inner {
+    animation: scroll-up 17s linear infinite;
+  }
+
+  /* Column 9 - scrolls DOWN, 26s */
+  .mockups-carousel__column--9 .mockups-carousel__column-inner {
+    animation: scroll-down 26s linear infinite;
+  }
 }
 
 /* Large Desktop - 1440px and up */
@@ -591,6 +636,16 @@ body::before {
 
   .mockups-carousel__mockup {
     max-width: 400px; /* 50 * 8px */
+  }
+
+  /* Ensure all 9 columns are visible on large desktop too */
+  .mockups-carousel__column--4,
+  .mockups-carousel__column--5,
+  .mockups-carousel__column--6,
+  .mockups-carousel__column--7,
+  .mockups-carousel__column--8,
+  .mockups-carousel__column--9 {
+    display: flex;
   }
 }
 
