@@ -659,6 +659,7 @@ body::before {
   z-index: 1;
   background-color: transparent;
   padding: var(--spacing-8) var(--spacing-3);
+  overflow: visible;
 }
 
 .how-it-works__container {
@@ -927,6 +928,7 @@ body::before {
 /* No Credit Card Required - Single Image */
 .how-it-works__feature--no-card {
   margin-top: var(--spacing-8);
+  overflow: visible;
 }
 
 /* No margin for this feature's description */
@@ -939,14 +941,180 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0; /* No padding */
+  padding: var(--spacing-6) var(--spacing-2);
+  overflow: visible;
+  margin-left: calc(var(--spacing-3) * -1);
+  margin-right: calc(var(--spacing-3) * -1);
+}
+
+/* Simple snap effect particles - dash/line shapes in brand colors */
+.how-it-works__mockups--single::before,
+.how-it-works__mockups--single::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 16px;
+  background: #A057FF;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+/* Animate line particles on scroll - sharp snap effect */
+.how-it-works__feature--animate .how-it-works__mockups--single::before {
+  opacity: 1;
+  animation: snap-line-1 400ms ease-out forwards;
+}
+
+.how-it-works__feature--animate .how-it-works__mockups--single::after {
+  opacity: 1;
+  background: #000000;
+  animation: snap-line-2 400ms ease-out 30ms forwards;
+}
+
+@keyframes snap-line-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-70px, -60px) scale(1.5) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snap-line-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(70px, -55px) scale(1.5) rotate(25deg);
+    opacity: 0;
+  }
 }
 
 .how-it-works__single-img {
   width: 100%;
-  max-width: 280px; /* 35 * 8px - smaller */
+  max-width: 480px;
   height: auto;
   display: block;
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  margin: 0 auto;
+}
+
+/* Broken card animation - triggers on scroll */
+.how-it-works__single-img #card-left,
+.how-it-works__single-img #card-right {
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center center;
+  position: relative;
+}
+
+.how-it-works__feature--animate .how-it-works__single-img #card-left {
+  transform: translateX(-20px) translateY(8px) rotate(-3deg);
+  filter: drop-shadow(0 0 8px rgba(160, 87, 255, 0.3));
+}
+
+.how-it-works__feature--animate .how-it-works__single-img #card-right {
+  transform: translateX(20px) translateY(-8px) rotate(3deg);
+  filter: drop-shadow(0 0 8px rgba(160, 87, 255, 0.3));
+}
+
+/* Simple line particles from card edges - snap effect */
+.how-it-works__single-img #card-left::before,
+.how-it-works__single-img #card-left::after,
+.how-it-works__single-img #card-right::before,
+.how-it-works__single-img #card-right::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Line particles from left card */
+.how-it-works__feature--animate .how-it-works__single-img #card-left::before {
+  top: 40%;
+  left: 90%;
+  background: #B67FFF;
+  opacity: 1;
+  animation: snap-left-1 350ms ease-out forwards;
+}
+
+.how-it-works__feature--animate .how-it-works__single-img #card-left::after {
+  top: 55%;
+  left: 85%;
+  background: #703AB3;
+  opacity: 1;
+  animation: snap-left-2 350ms ease-out 40ms forwards;
+}
+
+/* Line particles from right card */
+.how-it-works__feature--animate .how-it-works__single-img #card-right::before {
+  top: 40%;
+  right: 90%;
+  background: #A057FF;
+  opacity: 1;
+  animation: snap-right-1 350ms ease-out forwards;
+}
+
+.how-it-works__feature--animate .how-it-works__single-img #card-right::after {
+  top: 55%;
+  right: 85%;
+  background: #000000;
+  opacity: 1;
+  animation: snap-right-2 350ms ease-out 40ms forwards;
+}
+
+/* Sharp snap animations - quick and direct */
+@keyframes snap-left-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-45px, -35px) rotate(-35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snap-left-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-40px, 30px) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snap-right-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(45px, -35px) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snap-right-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(40px, 30px) rotate(20deg);
+    opacity: 0;
+  }
 }
 
 /* Use Any Currency - Horizontal Slider */
@@ -1145,7 +1313,41 @@ body::before {
 
   /* Single image - tablet */
   .how-it-works__single-img {
-    max-width: 320px; /* 40 * 8px */
+    max-width: 500px;
+  }
+
+  /* Broken card animation - tablet (stronger effect) */
+  .how-it-works__feature--animate .how-it-works__single-img #card-left {
+    transform: translateX(-25px) translateY(10px) rotate(-4deg);
+    filter: drop-shadow(0 0 10px rgba(160, 87, 255, 0.4));
+  }
+
+  .how-it-works__feature--animate .how-it-works__single-img #card-right {
+    transform: translateX(25px) translateY(-10px) rotate(4deg);
+    filter: drop-shadow(0 0 10px rgba(160, 87, 255, 0.4));
+  }
+
+  /* Stronger snap particle animation for tablet */
+  @keyframes snap-line-1 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-80px, -70px) scale(1.5) rotate(-30deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes snap-line-2 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(80px, -65px) scale(1.5) rotate(30deg);
+      opacity: 0;
+    }
   }
 
   /* Currency slider - tablet (larger icons, slower) */
@@ -1186,6 +1388,55 @@ body::before {
   .how-it-works__feature-description {
     font-size: 22px;
     max-width: 800px;
+  }
+
+  /* Split layout for desktop - text on one side, mockups on other */
+  .how-it-works__feature--split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-8);
+    align-items: center;
+    text-align: left;
+  }
+
+  /* Default layout: text left, mockups right */
+  .how-it-works__feature--split-layout .how-it-works__feature-title {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .how-it-works__feature--split-layout .how-it-works__feature-description {
+    grid-column: 1;
+    grid-row: 2;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  .how-it-works__feature--split-layout .how-it-works__mockups {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  /* Reverse layout: text right, mockups left */
+  .how-it-works__feature--reverse .how-it-works__feature-title {
+    grid-column: 2;
+  }
+
+  .how-it-works__feature--reverse .how-it-works__feature-description {
+    grid-column: 2;
+  }
+
+  .how-it-works__feature--reverse .how-it-works__mockups {
+    grid-column: 1;
+  }
+
+  /* Adjust underline for split layout - align left instead of center */
+  .how-it-works__feature--split-layout .how-it-works__underline {
+    left: 0;
+    transform: translateX(0);
   }
 
   .how-it-works__mockups {
@@ -1249,7 +1500,41 @@ body::before {
 
   /* Single image - desktop */
   .how-it-works__single-img {
-    max-width: 360px; /* 45 * 8px */
+    max-width: 600px;
+  }
+
+  /* Broken card animation - desktop (even stronger effect) */
+  .how-it-works__feature--animate .how-it-works__single-img #card-left {
+    transform: translateX(-30px) translateY(12px) rotate(-5deg);
+    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.5));
+  }
+
+  .how-it-works__feature--animate .how-it-works__single-img #card-right {
+    transform: translateX(30px) translateY(-12px) rotate(5deg);
+    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.5));
+  }
+
+  /* Stronger snap particle animation for desktop */
+  @keyframes snap-line-1 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-90px, -80px) scale(1.8) rotate(-35deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes snap-line-2 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(90px, -75px) scale(1.8) rotate(35deg);
+      opacity: 0;
+    }
   }
 
   /* Occassion cards - desktop (3 columns) */
@@ -1292,6 +1577,11 @@ body::before {
 
   .how-it-works__feature-description {
     font-size: 24px;
+  }
+
+  /* Split layout - keep grid structure from 1024px breakpoint */
+  .how-it-works__feature--split-layout {
+    gap: 96px; /* Larger gap on large desktop */
   }
 
   .how-it-works__mockups {
@@ -1355,7 +1645,41 @@ body::before {
 
   /* Single image - large desktop */
   .how-it-works__single-img {
-    max-width: 400px; /* 50 * 8px */
+    max-width: 650px;
+  }
+
+  /* Broken card animation - large desktop (strongest effect) */
+  .how-it-works__feature--animate .how-it-works__single-img #card-left {
+    transform: translateX(-35px) translateY(15px) rotate(-6deg);
+    filter: drop-shadow(0 0 15px rgba(160, 87, 255, 0.6));
+  }
+
+  .how-it-works__feature--animate .how-it-works__single-img #card-right {
+    transform: translateX(35px) translateY(-15px) rotate(6deg);
+    filter: drop-shadow(0 0 15px rgba(160, 87, 255, 0.6));
+  }
+
+  /* Strongest snap particle animation for large desktop */
+  @keyframes snap-line-1 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-100px, -90px) scale(2) rotate(-40deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes snap-line-2 {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100px, -85px) scale(2) rotate(40deg);
+      opacity: 0;
+    }
   }
 }
 
