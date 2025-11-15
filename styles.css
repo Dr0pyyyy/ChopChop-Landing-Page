@@ -28,6 +28,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background-color: var(--color-background);
@@ -35,6 +39,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 img {
@@ -151,6 +156,44 @@ body::before {
   height: var(--spacing-4);
 }
 
+/* Desktop Navigation - Hidden on mobile */
+.header__nav {
+  display: none;
+  gap: var(--spacing-4);
+}
+
+.header__nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--spacing-1) var(--spacing-2);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--spacing-2);
+  right: var(--spacing-2);
+  height: 2px;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transition: transform var(--transition-fast);
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus {
+  color: var(--color-brand);
+}
+
+.header__nav-link:hover::after,
+.header__nav-link:focus::after {
+  transform: scaleX(1);
+}
+
 /* Menu Overlay - Slide-in from right */
 .menu-overlay {
   position: fixed;
@@ -205,7 +248,42 @@ body::before {
 }
 
 .menu-overlay__nav {
-  /* Navigation styles will be added when nav items are needed */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-2);
+}
+
+.menu-overlay__nav-link {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--spacing-2) 0;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.menu-overlay__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transition: transform var(--transition-standard);
+}
+
+.menu-overlay__nav-link:hover,
+.menu-overlay__nav-link:focus {
+  color: var(--color-brand);
+}
+
+.menu-overlay__nav-link:hover::after,
+.menu-overlay__nav-link:focus::after {
+  transform: scaleX(1);
 }
 
 /* Hero Section - Mobile First */
@@ -284,6 +362,15 @@ body::before {
 
   .header__logo {
     height: var(--spacing-6);
+  }
+
+  /* Show desktop navigation, hide mobile menu button */
+  .header__nav {
+    display: flex;
+  }
+
+  .header__menu-btn {
+    display: none;
   }
 
   .hero {
@@ -435,8 +522,8 @@ body::before {
 
 /* Section container */
 .mockups-carousel {
-  width: 120%;
-  margin-left: -7.5%; /* Center the 115% width */
+  width: 100%;
+  margin-left: 0;
   height: 100vh; /* Full viewport height */
   background: #F2F2F2;
   overflow: hidden;
@@ -484,11 +571,13 @@ body::before {
 
 .mockups-carousel__container {
   display: flex;
-  gap: 24px; /* 3 * 8px */
+  gap: 8px; /* Small gap for mobile first */
   height: 100%;
   width: 100%;
+  max-width: 100%;
   margin: 0;
-  padding: 40px 0; /* 5 * 8px vertical only, no horizontal padding */
+  padding: 40px 4px; /* Small horizontal padding */
+  overflow: hidden;
 }
 
 /* Column wrapper */
@@ -512,7 +601,7 @@ body::before {
 /* Individual mockup image */
 .mockups-carousel__mockup {
   width: 100%;
-  max-width: 360px; /* 45 * 8px - larger so side columns overflow */
+  max-width: min(280px, 25vw); /* Responsive and mobile-safe */
   height: auto;
   display: block;
   border-radius: 16px; /* 2 * 8px */
@@ -551,39 +640,51 @@ body::before {
   animation-play-state: paused;
 }
 
-/* Mobile - All 3 columns visible */
-@media (max-width: 767px) {
+/* Very small mobile screens */
+@media (max-width: 480px) {
   .mockups-carousel__container {
-    gap: 16px; /* 2 * 8px - smaller gap on mobile */
-    padding: 32px 0; /* 4 * 8px vertical only */
+    gap: 4px; /* Minimal gap */
+    padding: 32px 2px; /* Very minimal horizontal padding */
   }
 
   .mockups-carousel__mockup {
-    max-width: 280px; /* 35 * 8px */
+    max-width: min(160px, 20vw); /* Much smaller mockups */
+  }
+}
+
+/* Mobile - All 3 columns visible */
+@media (min-width: 481px) and (max-width: 767px) {
+  .mockups-carousel__container {
+    gap: 6px; /* Small gap on mobile */
+    padding: 32px 4px; /* Small horizontal padding */
+  }
+
+  .mockups-carousel__mockup {
+    max-width: min(200px, 22vw); /* Smaller and responsive */
   }
 }
 
 /* Tablet - 768px to 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
   .mockups-carousel__container {
-    gap: 24px; /* 3 * 8px */
-    padding: 40px 0; /* 5 * 8px vertical only */
+    gap: 16px; /* Moderate gap */
+    padding: 40px 8px; /* Small horizontal padding */
   }
 
   .mockups-carousel__mockup {
-    max-width: 320px; /* 40 * 8px */
+    max-width: 280px; /* Smaller than before */
   }
 }
 
 /* Desktop - 1024px and up */
 @media (min-width: 1024px) {
   .mockups-carousel__container {
-    gap: 32px; /* 4 * 8px */
-    padding: 48px 0; /* 6 * 8px vertical only */
+    gap: 24px; /* Larger gap for desktop */
+    padding: 48px 0; /* No horizontal padding needed */
   }
 
   .mockups-carousel__mockup {
-    max-width: 360px; /* 45 * 8px */
+    max-width: 320px; /* Reasonable desktop size */
   }
 
   /* Show all 9 columns on desktop */
@@ -630,12 +731,12 @@ body::before {
 /* Large Desktop - 1440px and up */
 @media (min-width: 1440px) {
   .mockups-carousel__container {
-    gap: 40px; /* 5 * 8px */
-    padding: 56px 0; /* 7 * 8px vertical only */
+    gap: 32px; /* Reasonable gap for large screens */
+    padding: 56px 0; /* No horizontal padding */
   }
 
   .mockups-carousel__mockup {
-    max-width: 400px; /* 50 * 8px */
+    max-width: 360px; /* Reasonable size for large desktop */
   }
 
   /* Ensure all 9 columns are visible on large desktop too */
@@ -716,6 +817,27 @@ body::before {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Expanded description - hidden by default, shown only on desktop */
+.how-it-works__feature-description-expanded {
+  display: none;
+  margin-top: calc(var(--spacing-3) * -1); /* Offset the title margin-bottom */
+}
+
+.how-it-works__feature-description-expanded p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-3);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.how-it-works__feature-description-expanded p:last-child {
+  margin-bottom: var(--spacing-6);
 }
 
 .how-it-works__mockups {
@@ -943,8 +1065,8 @@ body::before {
   align-items: center;
   padding: var(--spacing-6) var(--spacing-2);
   overflow: visible;
-  margin-left: calc(var(--spacing-3) * -1);
-  margin-right: calc(var(--spacing-3) * -1);
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Simple snap effect particles - dash/line shapes in brand colors */
@@ -1128,15 +1250,15 @@ body::before {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-25%); /* Move 1/4 of total width for seamless loop */
   }
 }
 
 /* Currency slider container */
 .currency-slider {
   position: relative;
-  width: 100vw; /* Full viewport width */
-  margin-left: calc(-50vw + 50%); /* Extend to edges */
+  width: 100vw; /* Full viewport width even on mobile */
+  margin-left: calc(-50vw + 50%); /* Center and extend to edges on mobile too */
   overflow: hidden;
   padding: 24px 0; /* 3 * 8px vertical padding - half of original */
   margin-top: var(--spacing-4);
@@ -1193,6 +1315,15 @@ body::before {
   border-radius: 24px; /* 3 * 8px - larger radius */
   padding: 32px 24px; /* 4 * 8px, 3 * 8px */
   text-align: center;
+  transition: all var(--transition-standard);
+  cursor: pointer;
+}
+
+.occassion-cards__card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 32px rgba(160, 87, 255, 0.25),
+    0 16px 64px rgba(144, 76, 230, 0.15);
 }
 
 .occassion-cards__icon-wrapper {
@@ -1357,7 +1488,7 @@ body::before {
   }
 
   .currency-slider__track {
-    animation: scroll-left 22s linear infinite; /* Faster on tablet/desktop - 22s */
+    animation: scroll-left 30s linear infinite; /* Slower for smoother desktop experience */
   }
 
   /* Occassion cards - tablet (2 columns) */
@@ -1386,6 +1517,18 @@ body::before {
   }
 
   .how-it-works__feature-description {
+    font-size: 22px;
+    max-width: 800px;
+    display: none; /* Hide original short description on desktop */
+  }
+
+  /* Show expanded description on desktop */
+  .how-it-works__feature-description-expanded {
+    display: block;
+    margin-top: calc(var(--spacing-4) * -1); /* Tighter spacing on desktop */
+  }
+
+  .how-it-works__feature-description-expanded p {
     font-size: 22px;
     max-width: 800px;
   }
@@ -1576,6 +1719,15 @@ body::before {
   }
 
   .how-it-works__feature-description {
+    font-size: 24px;
+    display: none; /* Hide original short description on large desktop */
+  }
+
+  .how-it-works__feature-description-expanded {
+    margin-top: calc(var(--spacing-5) * -1); /* Even tighter spacing on large desktop */
+  }
+
+  .how-it-works__feature-description-expanded p {
     font-size: 24px;
   }
 

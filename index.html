@@ -12,6 +12,15 @@
   <header class="header">
     <div class="header__container">
       <img src="icons/logo.png" alt="ChopChop logo" class="header__logo">
+
+      <!-- Desktop Navigation -->
+      <nav class="header__nav">
+        <a href="#home" class="header__nav-link">Home</a>
+        <a href="#how-it-works" class="header__nav-link">How it Works</a>
+        <a href="#contact" class="header__nav-link">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
       <button class="header__menu-btn" aria-label="Open menu" aria-expanded="false">
         <img src="icons/hamburger-menu.svg" alt="" class="header__menu-icon">
       </button>
@@ -27,15 +36,17 @@
           <img src="icons/close.svg" alt="" class="menu-overlay__close-icon">
         </button>
       </div>
-      <!-- Navigation items can be added here in the future -->
+      <!-- Navigation items -->
       <nav class="menu-overlay__nav">
-        <!-- Navigation links will go here -->
+        <a href="#home" class="menu-overlay__nav-link">Home</a>
+        <a href="#how-it-works" class="menu-overlay__nav-link">How it Works</a>
+        <a href="#contact" class="menu-overlay__nav-link">Contact</a>
       </nav>
     </div>
   </div>
 
   <!-- Hero Section -->
-  <main class="hero">
+  <main class="hero" id="home">
     <div class="hero__container">
       <img src="icons/app-icon.png" alt="ChopChop app icon" class="hero__app-icon">
 
@@ -60,7 +71,7 @@
   </main>
 
   <!-- Mockups Carousel Section -->
-  <section class="mockups-carousel">
+  <section class="mockups-carousel" id="gallery">
     <div class="mockups-carousel__container">
       <!-- Column 1 - scrolls DOWN, 40s -->
       <div class="mockups-carousel__column mockups-carousel__column--left">
@@ -200,7 +211,7 @@
   </section>
 
   <!-- How it Works Section -->
-  <section class="how-it-works">
+  <section class="how-it-works" id="how-it-works">
     <div class="how-it-works__container">
       <h2 class="how-it-works__main-title">How it works</h2>
 
@@ -213,6 +224,13 @@
         <p class="how-it-works__feature-description">
           Set up a group for friends, family, or colleagues and keep all shared expenses in one place.
         </p>
+
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>Set up a group for your friends, family, or colleagues and keep all your shared expenses perfectly organized in one place.</p>
+
+          <p>Whether you're planning a trip, sharing rent, or just keeping track of everyday costs, it's the easiest way to stay on top of who owes what.</p>
+        </div>
 
         <div class="how-it-works__mockups">
           <div class="how-it-works__mockup how-it-works__mockup--left">
@@ -238,6 +256,13 @@
           Invite others using QR code or link and start sharing expenses in seconds.
         </p>
 
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>Invite your friends, family, or teammates using a simple QR code or link and start sharing expenses right away.</p>
+
+          <p>You can even add virtual members to include everyone in the balance — great for tracking costs for kids, guests, or anyone who's not in the app yet.</p>
+        </div>
+
         <div class="how-it-works__mockups how-it-works__mockups--two">
           <div class="how-it-works__mockup how-it-works__mockup--left-dual">
             <img src="mockups/invite-friends-mockup-left.png" alt="Invite friends interface - left view" class="how-it-works__mockup-img">
@@ -258,6 +283,13 @@
         <p class="how-it-works__feature-description">
           Record who paid what with multiple currencies and always stay on top of your payments.
         </p>
+
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>Easily record who paid what in any currency and keep your group finances crystal clear.</p>
+
+          <p>Whether you're traveling abroad or managing shared expenses at home, you'll always stay in control of your payments and balances.</p>
+        </div>
 
         <div class="how-it-works__mockups how-it-works__mockups--three">
           <div class="how-it-works__mockup how-it-works__mockup--left-cascade">
@@ -283,6 +315,13 @@
           ChopChop automatically calculates who owes whom and splits the bill fairly for you.
         </p>
 
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>ChopChop takes care of the math for you — it automatically figures out who owes whom and splits every bill fairly.</p>
+
+          <p>Whether it's dinner with friends, a group trip, or shared rent, you'll always know exactly where everyone stands.</p>
+        </div>
+
         <div class="how-it-works__mockups how-it-works__mockups--bottom">
           <div class="how-it-works__mockup how-it-works__mockup--left-bottom">
             <img src="mockups/split-the-bills-mockup-left.png" alt="Split bills interface - left view" class="how-it-works__mockup-img">
@@ -303,6 +342,13 @@
         <p class="how-it-works__feature-description">
           All we need is your IBAN to get you started. Your credit card can stay safely in your wallet.
         </p>
+
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>All we need is your IBAN to get you started. Your credit card can stay safely in your wallet.</p>
+
+          <p>Setting up your account only takes a few moments, and you'll be ready to go right away. It's simple, secure, and designed to make your life easier.</p>
+        </div>
 
         <div class="how-it-works__mockups--single">
           <svg class="how-it-works__single-img" preserveAspectRatio="xMidYMid meet" viewBox="-40 -20 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -443,11 +489,16 @@
           Split bills in euros, dollars, pounds, or any currency your group prefers - we handle the rest.
         </p>
 
+        <!-- Desktop-only expanded description -->
+        <div class="how-it-works__feature-description-expanded">
+          <p>Split bills in euros, dollars, pounds, or any currency your group prefers - we handle the rest.</p>
+        </div>
+
         <!-- Currency Icons Slider -->
         <div class="currency-slider">
           <!-- Slider track -->
           <div class="currency-slider__track">
-            <!-- First set of icons -->
+            <!-- First pattern - mixed currencies -->
             <div class="currency-slider__icon">
               <img src="icons/currencies/dollar.svg" alt="Dollar" class="currency-slider__icon-img">
             </div>
@@ -455,19 +506,68 @@
               <img src="icons/currencies/euro.svg" alt="Euro" class="currency-slider__icon-img">
             </div>
             <div class="currency-slider__icon">
+              <img src="icons/currencies/turkish-lira.svg" alt="Turkish Lira" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
               <img src="icons/currencies/libre.svg" alt="Pound" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/swiss-franc.svg" alt="Swiss Franc" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
+            </div>
+
+            <!-- Second pattern - different order -->
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/euro.svg" alt="Euro" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/dollar.svg" alt="Dollar" class="currency-slider__icon-img">
             </div>
             <div class="currency-slider__icon">
               <img src="icons/currencies/turkish-lira.svg" alt="Turkish Lira" class="currency-slider__icon-img">
             </div>
             <div class="currency-slider__icon">
-              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
+              <img src="icons/currencies/libre.svg" alt="Pound" class="currency-slider__icon-img">
             </div>
             <div class="currency-slider__icon">
               <img src="icons/currencies/swiss-franc.svg" alt="Swiss Franc" class="currency-slider__icon-img">
             </div>
 
-            <!-- Duplicate set for seamless loop -->
+            <!-- Third pattern - another mix -->
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/swiss-franc.svg" alt="Swiss Franc" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/dollar.svg" alt="Dollar" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/euro.svg" alt="Euro" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/turkish-lira.svg" alt="Turkish Lira" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/libre.svg" alt="Pound" class="currency-slider__icon-img">
+            </div>
+
+            <!-- Fourth pattern - ensure seamless loop -->
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/libre.svg" alt="Pound" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/swiss-franc.svg" alt="Swiss Franc" class="currency-slider__icon-img">
+            </div>
+            <div class="currency-slider__icon">
+              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
+            </div>
             <div class="currency-slider__icon">
               <img src="icons/currencies/dollar.svg" alt="Dollar" class="currency-slider__icon-img">
             </div>
@@ -475,16 +575,7 @@
               <img src="icons/currencies/euro.svg" alt="Euro" class="currency-slider__icon-img">
             </div>
             <div class="currency-slider__icon">
-              <img src="icons/currencies/libre.svg" alt="Pound" class="currency-slider__icon-img">
-            </div>
-            <div class="currency-slider__icon">
               <img src="icons/currencies/turkish-lira.svg" alt="Turkish Lira" class="currency-slider__icon-img">
-            </div>
-            <div class="currency-slider__icon">
-              <img src="icons/currencies/danish-krone.svg" alt="Danish Krone" class="currency-slider__icon-img">
-            </div>
-            <div class="currency-slider__icon">
-              <img src="icons/currencies/swiss-franc.svg" alt="Swiss Franc" class="currency-slider__icon-img">
             </div>
           </div>
         </div>
@@ -540,7 +631,7 @@
   <hr class="divider">
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="footer__container">
       <p class="footer__copyright">©2025 ChopChop</p>
 
