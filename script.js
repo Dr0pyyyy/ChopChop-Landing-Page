@@ -112,6 +112,55 @@
 
 })();
 
+// ChopChop Landing Page - Smooth Scrolling Navigation
+// Handles smooth scrolling to sections when navigation links are clicked
+
+(function() {
+  'use strict';
+
+  // Setup smooth scrolling for all anchor links
+  function setupSmoothScrolling() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          // Close mobile menu if open
+          const menuOverlay = document.querySelector('.menu-overlay');
+          const body = document.body;
+          const menuBtn = document.querySelector('.header__menu-btn');
+
+          if (menuOverlay && menuOverlay.classList.contains('menu-overlay--active')) {
+            menuOverlay.classList.remove('menu-overlay--active');
+            body.classList.remove('menu-open');
+
+            // Update aria states
+            menuOverlay.setAttribute('aria-hidden', 'true');
+            if (menuBtn) {
+              menuBtn.setAttribute('aria-expanded', 'false');
+            }
+          }
+
+          // Smooth scroll to target
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  }
+
+  // Initialize smooth scrolling when DOM is loaded
+  document.addEventListener('DOMContentLoaded', setupSmoothScrolling);
+
+})();
+
 // ChopChop Landing Page - Scroll Animation for Mockups
 // Triggers animation when user scrolls into "How it works" section
 
