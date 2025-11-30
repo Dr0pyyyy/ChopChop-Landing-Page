@@ -1,0 +1,70 @@
+/* Use Any Currency - Horizontal Slider */
+.how-it-works__feature--currency {
+  margin-top: var(--spacing-8);
+}
+
+/* Keyframes for horizontal scroll */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Currency slider container */
+.currency-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0; /* 3 * 8px vertical padding - half of original */
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+  background: white;
+  box-shadow:
+    inset 0 12px 24px rgba(0, 0, 0, 0.12),  /* Larger top inset shadow */
+    inset 0 -12px 24px rgba(0, 0, 0, 0.12); /* Larger bottom inset shadow */
+}
+
+/* Slider track - contains all icons - Mobile first (faster) */
+.currency-slider__track {
+  display: flex;
+  flex-direction: row;
+  gap: 24px; /* 3 * 8px - larger spacing */
+  animation: scroll-left 15s linear infinite; /* Faster - 15s */
+  will-change: transform;
+}
+
+/* Individual currency icon container - Mobile first (smaller) */
+.currency-slider__icon {
+  flex-shrink: 0;
+  width: 64px; /* 8 * 8px - smaller on mobile */
+  height: 64px; /* 8 * 8px - smaller on mobile */
+  background: linear-gradient(135deg, #E2BFFF 0%, #CC9FFF 100%);
+  border-radius: 16px; /* 2 * 8px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px; /* 1.5 * 8px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Icon image inside - larger SVG */
+.currency-slider__icon-img {
+  width: 75%; /* Larger SVG - 75% of container */
+  height: 75%;
+  object-fit: contain;
+}
+
+/* Tablet and up - larger icons, slower */
+@media (min-width: 768px) {
+  .currency-slider__icon {
+    width: 80px; /* 10 * 8px */
+    height: 80px; /* 10 * 8px */
+  }
+
+  .currency-slider__track {
+    animation: scroll-left 22s linear infinite; /* Faster on tablet/desktop - 22s */
+  }
+}

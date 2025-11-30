@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(python:*)",
+      "Bash(powershell -Command \"\n$svg = Get-Content ''icons/broken-card-together.svg'' -Raw\n$svg = $svg -replace ''<svg '', ''<svg class=\"\"\"how-it-works__single-img\"\"\" ''\n$html = Get-Content ''index.html'' -Raw\n$html = $html -replace ''<img src=\"\"\"icons/broken-card-together.svg\"\"\"[^>]*>'', $svg\nSet-Content ''index.html'' $html -NoNewline\nWrite-Output ''Done!''\n\")",
+      "Bash(powershell -Command:*)",
+      "Bash(sed:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\Users\\adamk\\Desktop\\ChopChop.Landing.Page\\replace-svg.ps1\")",
+      "Bash(mkdir:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,119 @@
+// ChopChop Landing Page - Scroll Animation for Mockups
+// Triggers animation when user scrolls into "How it works" section
+
+(function() {
+  'use strict';
+
+  // DOM Elements
+  const features = document.querySelectorAll('.how-it-works__feature');
+
+  // Check if Intersection Observer is supported
+  if ('IntersectionObserver' in window) {
+
+    // Create observer for scroll detection
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: '-20% 0px -20% 0px', // Shrink viewport detection area - triggers when element is more centered
+      threshold: 0.5 // Trigger when 50% of element is visible and centered on screen
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        // If element is in viewport and hasn't been animated yet
+        if (entry.isIntersecting && !entry.target.classList.contains('how-it-works__feature--animate')) {
+          // Add animation class to trigger mockup slide-in
+          entry.target.classList.add('how-it-works__feature--animate');
+
+          // Create particles for broken card animation
+          if (entry.target.classList.contains('how-it-works__feature--no-card')) {
+            createCardParticles(entry.target);
+          }
+
+          // Optional: unobserve after animation to prevent re-triggering
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all feature sections
+    features.forEach(function(feature) {
+      observer.observe(feature);
+    });
+
+  } else {
+    // Fallback for browsers that don't support Intersection Observer
+    // Just show all mockups immediately
+    features.forEach(function(feature) {
+      feature.classList.add('how-it-works__feature--animate');
+    });
+  }
+
+  /**
+   * Creates simple dash/line particles for snap effect
+   * Uses only brand purple and black colors
+   * All particles emanate from the center of the break
+   */
+  function createCardParticles(feature) {
+    const container = feature.querySelector('.how-it-works__mockups--single');
+    if (!container) return;
+
+    const particleCount = 6; // Fewer particles for cleaner effect
+    const colors = [
+      '#A057FF', '#B67FFF', '#703AB3', // Brand purple gradient
+      '#000000'  // Black
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'card-particle-snap';
+
+      // Random color from brand colors only
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      // Simple line/dash styling
+      particle.style.width = '2px';
+      particle.style.height = (Math.random() * 6 + 12) + 'px'; // 12-18px lines
+      particle.style.background = color;
+      particle.style.position = 'absolute';
+      particle.style.pointerEvents = 'none';
+
+      // All start from exact center (where card breaks)
+      particle.style.top = '50%';
+      particle.style.left = '50%';
+      particle.style.transform = 'translate(-50%, -50%)';
+      particle.style.opacity = '0';
+
+      // Evenly distributed directions in a circle
+      const angle = (Math.PI * 2 * i) / particleCount;
+      const distance = Math.random() * 30 + 50; // 50-80px
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+      // Rotate particle to point in the direction it's moving (convert radians to degrees + 90° offset)
+      const rotation = (angle * 180 / Math.PI) + 90;
+      const delay = Math.random() * 60;
+
+      // Quick, sharp transition for snap effect
+      particle.style.transition = `all ${350 + Math.random() * 80}ms ease-out ${delay}ms,
+                                   opacity ${300}ms ease-out ${delay}ms`;
+
+      container.appendChild(particle);
+
+      // Trigger snap animation from center
+      setTimeout(function() {
+        particle.style.opacity = '1';
+        particle.style.transform = `translate(${tx}px, ${ty}px) rotate(${rotation}deg)`;
+      }, 10);
+
+      // Quick fade out
+      setTimeout(function() {
+        particle.style.opacity = '0';
+      }, 280 + delay);
+
+      // Remove from DOM
+      setTimeout(function() {
+        particle.remove();
+      }, 700 + delay);
+    }
+  }
+
+})();

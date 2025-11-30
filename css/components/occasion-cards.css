@@ -1,0 +1,90 @@
+/* Use for Any Occasion - Cards */
+.how-it-works__feature--occassions {
+  margin-top: var(--spacing-8);
+}
+
+.occassion-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px; /* 3 * 8px */
+  margin-top: var(--spacing-6);
+}
+
+.occassion-cards__card {
+  background: #E6E6E6;
+  border-radius: 24px; /* 3 * 8px - larger radius */
+  padding: 32px 24px; /* 4 * 8px, 3 * 8px */
+  text-align: center;
+}
+
+.occassion-cards__icon-wrapper {
+  width: 64px; /* 8 * 8px */
+  height: 64px; /* 8 * 8px */
+  background: linear-gradient(135deg, #A057FF 0%, #904CE6 100%);
+  border-radius: 8px; /* 1 * 8px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px; /* 3 * 8px bottom margin */
+  padding: 16px; /* 2 * 8px */
+}
+
+.occassion-cards__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.occassion-cards__card-title {
+  font-size: 24px; /* 3 * 8px */
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px; /* 2 * 8px */
+}
+
+.occassion-cards__card-description {
+  font-size: 16px; /* 2 * 8px */
+  line-height: 1.5;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+  /* Occassion cards - tablet (2 columns) */
+  .occassion-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* 3 * 8px */
+  }
+
+  .occassion-cards__card:last-child {
+    grid-column: 1 / -1; /* Third card spans full width */
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  /* Occassion cards - desktop (3 columns) */
+  .occassion-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; /* 4 * 8px */
+  }
+
+  .occassion-cards__card:last-child {
+    grid-column: auto; /* Reset - no spanning on desktop */
+  }
+
+  .occassion-cards__icon-wrapper {
+    width: 72px; /* 9 * 8px - larger on desktop */
+    height: 72px; /* 9 * 8px */
+  }
+
+  .occassion-cards__card-title {
+    font-size: 28px; /* 3.5 * 8px */
+  }
+
+  .occassion-cards__card-description {
+    font-size: 18px;
+  }
+}
