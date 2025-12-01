@@ -38,15 +38,16 @@
   color: var(--color-text);
   display: inline-block;
   position: relative;
+  width: fit-content; /* Hug content width */
   max-width: 600px;
 }
 
 .how-it-works__underline {
   position: absolute;
   bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%; /* Narrower underline - 60% of title width */
+  left: 0;
+  right: 0;
+  width: auto; /* Auto width to match text width */
   height: 2px;
   background-color: var(--color-brand);
   border-radius: 2px;
@@ -453,60 +454,79 @@
 
   .how-it-works__feature-title {
     font-size: 48px; /* 6 * 8px */
+    margin-bottom: var(--spacing-2); /* Smaller spacing on desktop */
   }
 
   .how-it-works__feature-description {
     font-size: 22px;
     max-width: 800px;
+    margin-bottom: var(--spacing-2); /* Smaller spacing before expanded text */
   }
 
-  /* Split layout for desktop - text on one side, mockups on other */
+  /* Split layout for desktop - create a virtual text container */
   .how-it-works__feature--split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-8);
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
+    grid-template-areas: "text mockups";
   }
 
-  /* Default layout: text left, mockups right */
+  /* Create virtual text container using ::before pseudo-element */
+  .how-it-works__feature--split-layout::before {
+    content: "";
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Position text elements in text area - larger spacing */
   .how-it-works__feature--split-layout .how-it-works__feature-title {
-    grid-column: 1;
-    grid-row: 1;
-    margin-left: 0;
-    margin-right: 0;
+    grid-area: text;
+    align-self: start;
+    margin: 0 !important; /* Remove original margin-bottom */
+    margin-bottom: 0 !important; /* Force no bottom margin */
+    padding: 0 !important;
+    width: fit-content !important; /* Hug content width */
+    max-width: 100%;
   }
 
   .how-it-works__feature--split-layout .how-it-works__feature-description {
-    grid-column: 1;
-    grid-row: 2;
-    margin-left: 0;
-    margin-right: 0;
+    grid-area: text;
+    align-self: start;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 114px !important; /* Adjusted for 56px spacing */
+    padding-bottom: 20px !important; /* Larger space before expanded */
+    max-width: 100%;
+  }
+
+  .how-it-works__feature--split-layout .how-it-works__feature-description-expanded {
+    grid-area: text;
+    align-self: start;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 194px !important; /* Adjusted for 56px spacing */
     max-width: 100%;
   }
 
   .how-it-works__feature--split-layout .how-it-works__mockups {
-    grid-column: 2;
-    grid-row: 1 / 3;
+    grid-area: mockups;
+    align-self: start;
   }
 
   /* Reverse layout: text right, mockups left */
-  .how-it-works__feature--reverse .how-it-works__feature-title {
-    grid-column: 2;
+  .how-it-works__feature--reverse {
+    grid-template-areas: "mockups text" !important;
   }
 
-  .how-it-works__feature--reverse .how-it-works__feature-description {
-    grid-column: 2;
-  }
-
-  .how-it-works__feature--reverse .how-it-works__mockups {
-    grid-column: 1;
-  }
-
-  /* Adjust underline for split layout - align left instead of center */
+  /* Adjust underline for split layout - align left and closer to text */
   .how-it-works__feature--split-layout .how-it-works__underline {
     left: 0;
-    transform: translateX(0);
+    right: 0;
+    bottom: -4px !important; /* Much closer to title text */
+    width: auto !important; /* Auto width to match text for split layout too */
   }
 
   .how-it-works__mockups {
@@ -681,5 +701,33 @@
   .how-it-works__feature--animate .how-it-works__single-img #card-right {
     transform: translateX(45px) translateY(-20px) rotate(8deg);
     filter: drop-shadow(0 0 15px rgba(160, 87, 255, 0.6));
+  }
+}
+
+/* Feature descriptions responsivity */
+/* Hide expanded descriptions on mobile/tablet by default */
+.how-it-works__feature-description-expanded {
+  display: none;
+}
+
+/* Desktop - 1024px and up: Show expanded descriptions */
+@media (min-width: 1024px) {
+  .how-it-works__feature-description-expanded {
+    display: block;
+    margin-top: var(--spacing-1); /* Much smaller gap between short and long text */
+  }
+
+  .how-it-works__feature-description-expanded p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2); /* Smaller spacing between paragraphs */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .how-it-works__feature-description-expanded p:last-child {
+    margin-bottom: var(--spacing-4); /* Smaller spacing after expanded text */
   }
 }

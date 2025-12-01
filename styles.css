@@ -534,7 +534,6 @@ body::before {
   height: 100vh; /* Full viewport height */
   background: #F2F2F2;
   overflow: hidden;
-  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -578,13 +577,12 @@ body::before {
 
 .mockups-carousel__container {
   display: flex;
-  gap: 8px; /* Small gap for mobile first */
+  gap: 24px; /* 3 * 8px */
   height: 100%;
-  width: 100%;
-  max-width: 100%;
+  width: 160%; /* Much wider than viewport for significant overflow */
   margin: 0;
-  padding: 40px 4px; /* Small horizontal padding */
-  overflow: hidden;
+  padding: 40px 0; /* 5 * 8px vertical only, no horizontal padding */
+  transform: translateX(-50%) translateX(50vw); /* Perfect center - overflow on both sides */
 }
 
 /* Column wrapper */
@@ -608,7 +606,7 @@ body::before {
 /* Individual mockup image */
 .mockups-carousel__mockup {
   width: 100%;
-  max-width: min(280px, 25vw); /* Responsive and mobile-safe */
+  max-width: 600px; /* Much larger for dramatic overflow */
   height: auto;
   display: block;
   border-radius: 16px; /* 2 * 8px */
@@ -655,7 +653,7 @@ body::before {
   }
 
   .mockups-carousel__mockup {
-    max-width: min(160px, 20vw); /* Much smaller mockups */
+    max-width: 500px; /* Much larger mockups for mobile overflow */
   }
 }
 
@@ -667,7 +665,7 @@ body::before {
   }
 
   .mockups-carousel__mockup {
-    max-width: min(200px, 22vw); /* Smaller and responsive */
+    max-width: 550px; /* Much larger mockups for mobile overflow */
   }
 }
 
@@ -679,7 +677,7 @@ body::before {
   }
 
   .mockups-carousel__mockup {
-    max-width: 280px; /* Smaller than before */
+    max-width: 600px; /* Much larger for tablet overflow */
   }
 }
 
@@ -691,7 +689,7 @@ body::before {
   }
 
   .mockups-carousel__mockup {
-    max-width: 320px; /* Reasonable desktop size */
+    max-width: 650px; /* Much larger for desktop overflow */
   }
 
   /* Show all 9 columns on desktop */
@@ -743,7 +741,7 @@ body::before {
   }
 
   .mockups-carousel__mockup {
-    max-width: 360px; /* Reasonable size for large desktop */
+    max-width: 700px; /* Much larger for large desktop overflow */
   }
 
   /* Ensure all 9 columns are visible on large desktop too */

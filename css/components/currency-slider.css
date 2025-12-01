@@ -16,7 +16,8 @@
 /* Currency slider container */
 .currency-slider {
   position: relative;
-  width: 100%;
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center and extend to full width */
   overflow: hidden;
   padding: 24px 0; /* 3 * 8px vertical padding - half of original */
   margin-top: var(--spacing-4);

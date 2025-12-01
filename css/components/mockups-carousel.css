@@ -68,12 +68,13 @@
 }
 
 .mockups-carousel__container {
-  display: flex;
+  display: flex !important;
   gap: 24px; /* 3 * 8px */
   height: 100%;
-  width: 100%;
+  width: 160% !important; /* Good overflow - 30% na každou stranu */
   margin: 0;
   padding: 40px 0; /* 5 * 8px vertical only, no horizontal padding */
+  transform: translateX(-50%) translateX(50vw) !important; /* Perfect center - overflow on both sides */
 }
 
 /* Column wrapper */
@@ -96,8 +97,8 @@
 
 /* Individual mockup image */
 .mockups-carousel__mockup {
-  width: 100%;
-  max-width: 360px; /* 45 * 8px - larger so side columns overflow */
+  width: 100% !important;
+  max-width: 580px !important; /* Bigger size - compromise between small and huge */
   height: auto;
   display: block;
   border-radius: 16px; /* 2 * 8px */
@@ -144,7 +145,7 @@
   }
 
   .mockups-carousel__mockup {
-    max-width: 280px; /* 35 * 8px */
+    max-width: 500px; /* 62.5 * 8px - much larger for mobile overflow */
   }
 }
 
@@ -156,7 +157,7 @@
   }
 
   .mockups-carousel__mockup {
-    max-width: 320px; /* 40 * 8px */
+    max-width: 550px; /* 68.75 * 8px - much larger for tablet overflow */
   }
 }
 
@@ -168,7 +169,7 @@
   }
 
   .mockups-carousel__mockup {
-    max-width: 360px; /* 45 * 8px */
+    max-width: 600px; /* 75 * 8px - much larger for desktop overflow */
   }
 
   /* Show all 9 columns on desktop */
@@ -220,7 +221,7 @@
   }
 
   .mockups-carousel__mockup {
-    max-width: 400px; /* 50 * 8px */
+    max-width: 650px; /* 81.25 * 8px - largest for large desktop overflow */
   }
 
   /* Ensure all 9 columns are visible on large desktop too */
@@ -233,3 +234,5 @@
     display: flex;
   }
 }
+
+/* UPDATED 2024-11-30 21:00 - Force browser cache refresh - mockups 580px + 160% width */
