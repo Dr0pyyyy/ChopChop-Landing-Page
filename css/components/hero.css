@@ -47,10 +47,44 @@
 .hero__download-link {
   display: inline-block;
   min-height: var(--spacing-6);
+  position: relative;
 }
 
 .hero__download-link:focus {
   outline: none;
+}
+
+/* Coming soon wrapper */
+.hero__coming-soon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Disabled state styling */
+.hero__download-link--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.hero__download-img--disabled {
+  filter: grayscale(100%);
+}
+
+/* Coming soon badge */
+.hero__coming-soon-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--color-brand);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .hero__download-img {
@@ -101,6 +135,11 @@
     gap: var(--spacing-2);
   }
 
+  .hero__coming-soon-wrapper {
+    flex-direction: row;
+    gap: var(--spacing-2);
+  }
+
   .hero__download-divider {
     margin: 0;
     font-size: 18px;
@@ -139,7 +178,11 @@
   }
 
   .hero__download-buttons {
-    gap: var(--spacing-2);
+    gap: var(--spacing-3);
+  }
+
+  .hero__coming-soon-wrapper {
+    gap: var(--spacing-3);
   }
 
   .hero__download-divider {

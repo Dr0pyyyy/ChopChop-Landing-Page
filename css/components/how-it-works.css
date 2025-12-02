@@ -28,7 +28,7 @@
 }
 
 .how-it-works__feature--two-mockups {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
 }
 
 .how-it-works__feature-title {
@@ -162,7 +162,7 @@
 
 /* Three Mockups Cascade Animation - Add Transactions */
 .how-it-works__feature--three-mockups {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
 }
 
 .how-it-works__mockups--three {
@@ -224,7 +224,7 @@
 
 /* Bottom-Up Animation - Split the Bills */
 .how-it-works__feature--bottom-up {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
 }
 
 .how-it-works__mockups--bottom {
@@ -273,7 +273,7 @@
 
 /* No Credit Card Required - Single Image */
 .how-it-works__feature--no-card {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
   overflow: visible;
 }
 
@@ -473,6 +473,11 @@
     grid-template-areas: "text mockups";
   }
 
+  /* Create groups má větší mezeru kvůli velkým mockupům */
+  .how-it-works__feature--create-groups {
+    gap: 144px; /* 18 * 8px - ještě větší mezera pro create groups */
+  }
+
   /* Create virtual text container using ::before pseudo-element */
   .how-it-works__feature--split-layout::before {
     content: "";
@@ -623,9 +628,18 @@
     font-size: 24px;
   }
 
+  .how-it-works__feature-description-expanded p {
+    font-size: 24px;
+  }
+
   /* Split layout - keep grid structure from 1024px breakpoint */
   .how-it-works__feature--split-layout {
     gap: 96px; /* Larger gap on large desktop */
+  }
+
+  /* Create groups má ještě větší mezeru na velkém desktopu */
+  .how-it-works__feature--create-groups {
+    gap: 192px; /* 24 * 8px - ideální mezera pro create groups */
   }
 
   .how-it-works__mockups {
@@ -718,7 +732,7 @@
   }
 
   .how-it-works__feature-description-expanded p {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.6;
     color: var(--color-text);
     margin-bottom: var(--spacing-2); /* Smaller spacing between paragraphs */

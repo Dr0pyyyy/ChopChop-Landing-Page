@@ -1,6 +1,6 @@
 /* Use for Any Occasion - Cards */
 .how-it-works__feature--occassions {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
 }
 
 .occassion-cards {
@@ -15,6 +15,13 @@
   border-radius: 24px; /* 3 * 8px - larger radius */
   padding: 32px 24px; /* 4 * 8px, 3 * 8px */
   text-align: center;
+  transition: all var(--transition-standard);
+  cursor: pointer;
+}
+
+.occassion-cards__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
 }
 
 .occassion-cards__icon-wrapper {

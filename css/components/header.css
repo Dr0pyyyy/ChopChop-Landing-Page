@@ -113,17 +113,18 @@ body {
 /* Desktop Navigation - Hidden on mobile */
 .header__nav {
   display: none;
-  gap: var(--spacing-4);
+  gap: var(--spacing-5);
 }
 
 .header__nav-link {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--color-text);
   text-decoration: none;
   position: relative;
   padding: var(--spacing-2) 0;
   transition: color var(--transition-fast);
+  padding-bottom: 4px;
 }
 
 .header__nav-link::after {

@@ -1,6 +1,7 @@
 /* Use Any Currency - Horizontal Slider */
 .how-it-works__feature--currency {
-  margin-top: var(--spacing-8);
+  margin-top: 192px; /* 24 * 8px - větší mezery */
+  margin-bottom: 192px; /* 24 * 8px - větší mezery */
 }
 
 /* Keyframes for horizontal scroll */
@@ -42,7 +43,7 @@
   flex-shrink: 0;
   width: 64px; /* 8 * 8px - smaller on mobile */
   height: 64px; /* 8 * 8px - smaller on mobile */
-  background: linear-gradient(135deg, #E2BFFF 0%, #CC9FFF 100%);
+  background: linear-gradient(135deg, #A057FF 0%, #904CE6 100%);
   border-radius: 16px; /* 2 * 8px */
   display: flex;
   align-items: center;
@@ -56,6 +57,7 @@
   width: 75%; /* Larger SVG - 75% of container */
   height: 75%;
   object-fit: contain;
+  filter: brightness(0) invert(1); /* Make icons white */
 }
 
 /* Tablet and up - larger icons, slower */
