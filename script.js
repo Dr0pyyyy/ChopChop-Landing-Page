@@ -25,8 +25,7 @@
     // Lock body scroll
     body.classList.add('menu-open');
 
-    // Hide header when menu is open
-    body.classList.add('menu-open-hide-header');
+    // Header is hidden via CSS using body.menu-open class
 
     // Update ARIA attributes for accessibility
     menuBtn.setAttribute('aria-expanded', 'true');
@@ -54,8 +53,7 @@
     // Unlock body scroll
     body.classList.remove('menu-open');
 
-    // Show header when menu is closed
-    body.classList.remove('menu-open-hide-header');
+    // Header will show via CSS when body.menu-open class is removed
 
     // Update ARIA attributes for accessibility
     menuBtn.setAttribute('aria-expanded', 'false');
@@ -68,8 +66,10 @@
       menuIcon.src = 'icons/hamburger-menu.svg';
     }
 
-    // Return focus to menu button for keyboard navigation
-    menuBtn.focus();
+    // Return focus to menu button for keyboard navigation (only if visible)
+    if (menuBtn && !body.classList.contains('menu-open')) {
+      menuBtn.focus();
+    }
   }
 
   /**
@@ -139,9 +139,12 @@
 
   // Setup smooth scrolling for all anchor links
   function setupSmoothScrolling() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+    // Select all navigation links (both header and menu overlay)
+    const headerNavLinks = document.querySelectorAll('.header__nav-link');
+    const menuNavLinks = document.querySelectorAll('.menu-overlay__nav-link');
+    const allNavLinks = [...headerNavLinks, ...menuNavLinks];
 
-    navLinks.forEach(function(link) {
+    allNavLinks.forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
 
@@ -154,16 +157,26 @@
           const body = document.body;
           const menuBtn = document.querySelector('.header__menu-btn');
 
-          const menuWasOpen = menuOverlay && menuOverlay.classList.contains('menu-overlay--active');
-
-          if (menuWasOpen) {
+          // Check if menu is open
+          if (menuOverlay && menuOverlay.classList.contains('menu-overlay--active')) {
+            // Close menu completely
             menuOverlay.classList.remove('menu-overlay--active');
             body.classList.remove('menu-open');
 
-            // Update aria states
-            menuOverlay.setAttribute('aria-hidden', 'true');
+            // Reset hamburger icon
+            const menuIcon = menuBtn ? menuBtn.querySelector('.header__menu-icon') : null;
+            if (menuIcon) {
+              menuIcon.src = 'icons/hamburger-menu.svg';
+            }
+
+            // Update button states
             if (menuBtn) {
               menuBtn.setAttribute('aria-expanded', 'false');
+              menuBtn.setAttribute('aria-label', 'Open menu');
+            }
+
+            if (menuOverlay) {
+              menuOverlay.setAttribute('aria-hidden', 'true');
             }
 
             // Wait for menu close animation before scrolling
@@ -172,7 +185,7 @@
                 behavior: 'smooth',
                 block: 'start'
               });
-            }, 150); // Small delay for menu animation
+            }, 200); // Increased delay
           } else {
             // No menu open, scroll immediately
             targetElement.scrollIntoView({

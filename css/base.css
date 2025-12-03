@@ -101,6 +101,19 @@ body.menu-open {
   overflow: hidden;
 }
 
+/* Hide header when menu is open - CRITICAL FIX */
+body.menu-open .header {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: -1 !important;
+}
+
+/* Ensure menu overlay is above everything */
+body.menu-open .menu-overlay {
+  z-index: 99999 !important;
+}
+
 /* Accessibility - Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
