@@ -25,12 +25,21 @@
     // Lock body scroll
     body.classList.add('menu-open');
 
+    // Hide header when menu is open
+    body.classList.add('menu-open-hide-header');
+
     // Update ARIA attributes for accessibility
     menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', 'Close menu');
     menuOverlay.setAttribute('aria-hidden', 'false');
 
-    // Focus on close button for keyboard navigation
-    closeBtn.focus();
+    // Change hamburger icon to close icon
+    const menuIcon = menuBtn.querySelector('.header__menu-icon');
+    if (menuIcon) {
+      menuIcon.src = 'icons/close.svg';
+    }
+
+    // Focus handled by menu for keyboard navigation
   }
 
   /**
@@ -45,9 +54,19 @@
     // Unlock body scroll
     body.classList.remove('menu-open');
 
+    // Show header when menu is closed
+    body.classList.remove('menu-open-hide-header');
+
     // Update ARIA attributes for accessibility
     menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
     menuOverlay.setAttribute('aria-hidden', 'true');
+
+    // Change close icon back to hamburger icon
+    const menuIcon = menuBtn.querySelector('.header__menu-icon');
+    if (menuIcon) {
+      menuIcon.src = 'icons/hamburger-menu.svg';
+    }
 
     // Return focus to menu button for keyboard navigation
     menuBtn.focus();
@@ -66,12 +85,12 @@
 
   // Event Listeners
 
-  // Open menu when hamburger button is clicked
+  // Toggle menu when hamburger button is clicked
   if (menuBtn) {
-    menuBtn.addEventListener('click', openMenu);
+    menuBtn.addEventListener('click', toggleMenu);
   }
 
-  // Close menu when close button is clicked
+  // Close menu when close button in overlay is clicked
   if (closeBtn) {
     closeBtn.addEventListener('click', closeMenu);
   }
@@ -135,7 +154,9 @@
           const body = document.body;
           const menuBtn = document.querySelector('.header__menu-btn');
 
-          if (menuOverlay && menuOverlay.classList.contains('menu-overlay--active')) {
+          const menuWasOpen = menuOverlay && menuOverlay.classList.contains('menu-overlay--active');
+
+          if (menuWasOpen) {
             menuOverlay.classList.remove('menu-overlay--active');
             body.classList.remove('menu-open');
 
@@ -144,13 +165,21 @@
             if (menuBtn) {
               menuBtn.setAttribute('aria-expanded', 'false');
             }
-          }
 
-          // Smooth scroll to target
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+            // Wait for menu close animation before scrolling
+            setTimeout(() => {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, 150); // Small delay for menu animation
+          } else {
+            // No menu open, scroll immediately
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
       });
     });

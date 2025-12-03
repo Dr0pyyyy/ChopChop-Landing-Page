@@ -16,6 +16,11 @@ body {
   padding-top: 80px; /* Space for fixed header */
 }
 
+/* Hide header when menu is open */
+body.menu-open-hide-header .header {
+  display: none !important;
+}
+
 /* Liquid glass effect when scrolled */
 .header.scrolled {
   background-color: rgba(255, 255, 255, 0.1); /* Much more transparent */
