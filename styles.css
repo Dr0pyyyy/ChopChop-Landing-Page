@@ -73,12 +73,12 @@ body {
 body::before {
   content: '';
   position: absolute;
-  top: 100vh; /* Start after mockups carousel (100vh) */
+  top: 0; /* Start from the very beginning */
   left: 0;
   right: 0;
   width: 100%;
   max-width: 100%;
-  height: 710vh; /* Large height */
+  height: 1000vh; /* Much larger height to cover entire page */
   background-image: url('icons/background-line.svg');
   background-repeat: no-repeat;
   background-position: top center;
@@ -88,12 +88,11 @@ body::before {
   overflow: hidden;
   mask-image: linear-gradient(to bottom,
     transparent 0%,
-    rgba(0, 0, 0, 0.05) 1%,
-    rgba(0, 0, 0, 0.15) 2%,
+    transparent 1%,
+    rgba(0, 0, 0, 0.1) 2%,
     rgba(0, 0, 0, 0.3) 3%,
-    rgba(0, 0, 0, 0.5) 4%,
-    rgba(0, 0, 0, 0.7) 5%,
-    black 8%,
+    rgba(0, 0, 0, 0.6) 4%,
+    black 6%,
     black 85%,
     rgba(0, 0, 0, 0.9) 88%,
     rgba(0, 0, 0, 0.7) 91%,
@@ -104,12 +103,11 @@ body::before {
     transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom,
     transparent 0%,
-    rgba(0, 0, 0, 0.05) 1%,
-    rgba(0, 0, 0, 0.15) 2%,
+    transparent 1%,
+    rgba(0, 0, 0, 0.1) 2%,
     rgba(0, 0, 0, 0.3) 3%,
-    rgba(0, 0, 0, 0.5) 4%,
-    rgba(0, 0, 0, 0.7) 5%,
-    black 8%,
+    rgba(0, 0, 0, 0.6) 4%,
+    black 6%,
     black 85%,
     rgba(0, 0, 0, 0.9) 88%,
     rgba(0, 0, 0, 0.7) 91%,
@@ -532,7 +530,7 @@ body::before {
 .mockups-carousel {
   width: 100%;
   height: 100vh; /* Full viewport height */
-  background: transparent;
+  background: #F2F2F2;
   overflow: hidden;
   align-items: center;
   justify-content: center;
@@ -581,7 +579,8 @@ body::before {
   height: 100%;
   width: 160%; /* Much wider than viewport for significant overflow */
   margin: 0;
-  padding: 40px 0; /* 5 * 8px vertical only, no horizontal padding */
+  padding-top: 40px; /* 5 * 8px top padding */
+  padding-bottom: 40px; /* 5 * 8px bottom padding */
   transform: translateX(-50%) translateX(50vw); /* Perfect center - overflow on both sides */
 }
 

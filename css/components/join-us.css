@@ -46,6 +46,7 @@
 
 .join-us__field {
   margin-bottom: var(--spacing-4);
+  opacity: 1;
 }
 
 .join-us__label {

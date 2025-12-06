@@ -23,7 +23,7 @@
 .mockups-carousel {
   width: 100%;
   height: 100vh; /* Full viewport height */
-  background: transparent;
+  background: #F2F2F2;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -73,7 +73,6 @@
   height: 100%;
   width: 160% !important; /* Good overflow - 30% na každou stranu */
   margin: 0;
-  padding: 40px 0; /* 5 * 8px vertical only, no horizontal padding */
   transform: translateX(-50%) translateX(50vw) !important; /* Perfect center - overflow on both sides */
 }
 
@@ -137,7 +136,8 @@
 @media (max-width: 767px) {
   .mockups-carousel__container {
     gap: 16px; /* 2 * 8px - smaller gap on mobile */
-    padding: 32px 0; /* 4 * 8px vertical only */
+    padding-top: 32px; /* 4 * 8px top padding */
+    padding-bottom: 32px; /* 4 * 8px bottom padding */
   }
 
   .mockups-carousel__mockup {
@@ -149,7 +149,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .mockups-carousel__container {
     gap: 24px; /* 3 * 8px */
-    padding: 40px 0; /* 5 * 8px vertical only */
+
   }
 
   .mockups-carousel__mockup {
@@ -161,7 +161,6 @@
 @media (min-width: 1024px) {
   .mockups-carousel__container {
     gap: 32px; /* 4 * 8px */
-    padding: 48px 0; /* 6 * 8px vertical only */
   }
 
   .mockups-carousel__mockup {
@@ -213,7 +212,6 @@
 @media (min-width: 1440px) {
   .mockups-carousel__container {
     gap: 40px; /* 5 * 8px */
-    padding: 56px 0; /* 7 * 8px vertical only */
   }
 
   .mockups-carousel__mockup {
