@@ -68,6 +68,8 @@
   transition: none;
   font-family: inherit;
   resize: vertical;
+  position: relative;
+  z-index: 1;
 }
 
 .join-us__input:focus {
