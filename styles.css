@@ -532,7 +532,7 @@ body::before {
 .mockups-carousel {
   width: 100%;
   height: 100vh; /* Full viewport height */
-  background: #F2F2F2;
+  background: transparent;
   overflow: hidden;
   align-items: center;
   justify-content: center;
@@ -548,10 +548,10 @@ body::before {
   right: 0;
   height: 120px; /* 15 * 8px */
   background: linear-gradient(to bottom,
-    #F2F2F2 0%,
-    rgba(242, 242, 242, 0.9) 25%,
-    rgba(242, 242, 242, 0.6) 50%,
-    rgba(242, 242, 242, 0.3) 75%,
+    transparent 0%,
+    transparent 25%,
+    transparent 50%,
+    transparent 75%,
     transparent 100%);
   z-index: 10;
   pointer-events: none;
@@ -566,10 +566,10 @@ body::before {
   right: 0;
   height: 120px; /* 15 * 8px */
   background: linear-gradient(to top,
-    #F2F2F2 0%,
-    rgba(242, 242, 242, 0.9) 25%,
-    rgba(242, 242, 242, 0.6) 50%,
-    rgba(242, 242, 242, 0.3) 75%,
+    transparent 0%,
+    transparent 25%,
+    transparent 50%,
+    transparent 75%,
     transparent 100%);
   z-index: 10;
   pointer-events: none;
@@ -640,10 +640,6 @@ body::before {
   display: none;
 }
 
-/* Optional: pause animation on hover */
-.mockups-carousel__column:hover .mockups-carousel__column-inner {
-  animation-play-state: paused;
-}
 
 /* Very small mobile screens */
 @media (max-width: 480px) {
