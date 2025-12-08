@@ -94,6 +94,17 @@ body::before {
     transparent 100%);
 }
 
+/* Responsive background line adjustments */
+@media (max-width: 514px) {
+  body::before {
+    background-size: 514px auto;
+    background-position: top center;
+    min-width: 514px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 /* Body scroll lock when menu is open */
 body.menu-open {
   overflow: hidden;
