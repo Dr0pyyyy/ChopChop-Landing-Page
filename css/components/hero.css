@@ -55,6 +55,18 @@
   outline: none;
 }
 
+/* TestFlight button styling */
+.hero__testflight-link {
+  margin-bottom: var(--spacing-4); /* Add more margin below TestFlight button */
+  align-self: center; /* Center the TestFlight button */
+  width: fit-content; /* Make button only as wide as needed */
+}
+
+.hero__testflight-link:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
 /* Coming soon wrapper */
 .hero__coming-soon-wrapper {
   display: flex;
@@ -131,9 +143,10 @@
   }
 
   .hero__download-buttons {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    gap: var(--spacing-2);
+    align-items: center;
+    gap: var(--spacing-3);
   }
 
   .hero__coming-soon-wrapper {
