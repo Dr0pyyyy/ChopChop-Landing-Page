@@ -455,7 +455,7 @@
 
   .how-it-works__feature-title {
     font-size: 48px; /* 6 * 8px */
-    margin-bottom: var(--spacing-2); /* Smaller spacing on desktop */
+    margin-bottom: var(--spacing-4); /* Normal spacing since we hide short description */
   }
 
   .how-it-works__feature-description {
@@ -513,7 +513,7 @@
     align-self: start;
     margin: 0 !important;
     padding: 0 !important;
-    padding-top: 194px !important; /* Adjusted for 56px spacing */
+    padding-top: 104px !important; /* Adjusted spacing below title */
     max-width: 100%;
   }
 
@@ -725,11 +725,24 @@
   display: none;
 }
 
-/* Desktop - 1024px and up: Show expanded descriptions */
+/* Desktop - 1024px and up: Show expanded descriptions, hide short descriptions */
 @media (min-width: 1024px) {
+  .how-it-works__feature-description {
+    display: none; /* Hide short mobile text on desktop */
+  }
+
   .how-it-works__feature-description-expanded {
     display: block;
-    margin-top: var(--spacing-1); /* Much smaller gap between short and long text */
+    margin-top: 0; /* No gap since we hide short description */
+  }
+
+  /* Exception: Show short description for "no credit card" feature */
+  .how-it-works__feature--no-card .how-it-works__feature-description {
+    display: block; /* Show short text for this feature */
+  }
+
+  .how-it-works__feature--no-card .how-it-works__feature-description-expanded {
+    display: none; /* Hide expanded text for this feature */
   }
 
   .how-it-works__feature-description-expanded p {
@@ -743,6 +756,6 @@
   }
 
   .how-it-works__feature-description-expanded p:last-child {
-    margin-bottom: var(--spacing-4); /* Smaller spacing after expanded text */
+    margin-bottom: var(--spacing-2); /* Much smaller spacing after expanded text */
   }
 }
