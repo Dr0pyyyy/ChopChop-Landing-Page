@@ -40,7 +40,7 @@
 .footer__social-link {
   width: 40px; /* 5 * 8px */
   height: 40px; /* 5 * 8px */
-  background: #CFCFCF;
+  background: var(--color-white);
   border-radius: 8px; /* 1 * 8px */
   display: flex;
   align-items: center;

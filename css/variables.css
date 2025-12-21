@@ -20,3 +20,12 @@
   --transition-standard: 300ms ease-in-out;
   --transition-slow: 400ms ease-in-out;
 }
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-text: #e0e0e0;
+  --color-brand: #B366FF;
+  --color-white: #2a2a2a;
+  --color-slider-bg: #262626;
+}

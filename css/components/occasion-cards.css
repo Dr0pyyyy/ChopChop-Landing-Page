@@ -11,7 +11,7 @@
 }
 
 .occassion-cards__card {
-  background: #E6E6E6;
+  background: var(--color-white);
   border-radius: 24px; /* 3 * 8px - larger radius */
   padding: 32px 24px; /* 4 * 8px, 3 * 8px */
   text-align: center;
@@ -27,7 +27,7 @@
 .occassion-cards__icon-wrapper {
   width: 64px; /* 8 * 8px */
   height: 64px; /* 8 * 8px */
-  background: linear-gradient(135deg, #A057FF 0%, #904CE6 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, #904CE6 100%);
   border-radius: 8px; /* 1 * 8px */
   display: flex;
   align-items: center;

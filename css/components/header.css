@@ -26,6 +26,13 @@ body {
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
 }
 
+/* Dark theme header adjustments */
+[data-theme="dark"] .header.scrolled {
+  background-color: rgba(0, 0, 0, 0.3); /* Dark semi-transparent background */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+
 .header__container {
   max-width: 1440px;
   margin: 0 auto;
