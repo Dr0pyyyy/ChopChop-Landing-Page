@@ -144,6 +144,9 @@ class LanguageSwitcher {
     this.applyLanguage(this.currentLanguage);
     this.updateUI();
 
+    // Dispatch custom event for mockup switcher
+    document.dispatchEvent(new CustomEvent('languageChanged'));
+
     // Remove focus from button to reset hover state
     document.activeElement.blur();
   }

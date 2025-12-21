@@ -72,20 +72,19 @@ body {
 
 body::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0; /* Start from the very beginning */
   left: 0;
   right: 0;
   width: 100%;
   max-width: 100%;
-  height: 1000vh; /* Much larger height to cover entire page */
+  height: 100vh;
   background-image: url('icons/background-line.svg');
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
   mask-image: linear-gradient(to bottom,
     transparent 0%,
     transparent 1%,

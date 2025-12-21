@@ -31,6 +31,9 @@ class ThemeSwitcher {
     this.applyTheme(this.currentTheme);
     this.updateUI();
 
+    // Dispatch custom event for mockup switcher
+    document.dispatchEvent(new CustomEvent('themeChanged'));
+
     // Remove focus from button to reset hover state
     document.activeElement.blur();
   }
