@@ -67,6 +67,11 @@
   filter: brightness(0) invert(1); /* Make icons white */
 }
 
+/* Dark theme - darker purple gradient */
+[data-theme="dark"] .currency-slider__icon {
+  background: linear-gradient(135deg, #6B35B3 0%, #5A2D9A 100%);
+}
+
 /* Tablet and up - larger icons, slower */
 @media (min-width: 768px) {
   .currency-slider__icon {

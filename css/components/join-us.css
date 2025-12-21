@@ -2,7 +2,8 @@
 .join-us {
   padding: 0;
   margin-top: 192px; /* 24 * 8px - větší mezery */
-  background-color: var(--color-background);
+  background: transparent;
+  position: relative;
 }
 
 .join-us__container {

@@ -5,6 +5,7 @@
 @import url('base.css');
 
 /* Import component styles */
+@import url('components/parallax.css');
 @import url('components/header.css');
 @import url('components/hero.css');
 @import url('components/mockups-carousel.css');

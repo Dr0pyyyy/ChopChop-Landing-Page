@@ -1,0 +1,149 @@
+/* Parallax Background Container */
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Large Floating Circles */
+.parallax-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 87, 255, 0.4) 0%, rgba(160, 87, 255, 0.2) 60%, transparent 100%);
+  filter: blur(80px);
+  will-change: transform;
+}
+
+[data-theme="dark"] .parallax-circle {
+  background: radial-gradient(circle, rgba(160, 87, 255, 0.5) 0%, rgba(160, 87, 255, 0.3) 60%, transparent 100%);
+}
+
+.parallax-circle-1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+}
+
+.parallax-circle-2 {
+  width: 600px;
+  height: 600px;
+  top: 40%;
+  left: -150px;
+}
+
+.parallax-circle-3 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: 10%;
+}
+
+.parallax-circle-4 {
+  width: 600px;
+  height: 600px;
+  top: 60%;
+  right: 15%;
+}
+
+/* Small Floating Dots */
+.parallax-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(160, 87, 255, 0.6), rgba(182, 127, 255, 0.5));
+  filter: blur(40px);
+  will-change: transform;
+}
+
+[data-theme="dark"] .parallax-dot {
+  background: linear-gradient(135deg, rgba(160, 87, 255, 0.7), rgba(182, 127, 255, 0.6));
+}
+
+.parallax-dot-1 {
+  width: 140px;
+  height: 140px;
+  top: 20%;
+  right: 20%;
+}
+
+.parallax-dot-2 {
+  width: 140px;
+  height: 140px;
+  top: 50%;
+  left: 15%;
+}
+
+.parallax-dot-3 {
+  width: 140px;
+  height: 140px;
+  bottom: 30%;
+  right: 30%;
+}
+
+.parallax-dot-4 {
+  width: 140px;
+  height: 140px;
+  top: 70%;
+  left: 25%;
+}
+
+.parallax-dot-5 {
+  width: 140px;
+  height: 140px;
+  top: 35%;
+  left: 40%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .parallax-circle {
+    opacity: 0.6;
+  }
+
+  .parallax-circle-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .parallax-circle-2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .parallax-circle-3 {
+    width: 380px;
+    height: 380px;
+  }
+
+  .parallax-circle-4 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .parallax-dot {
+    opacity: 0.7;
+  }
+
+  .parallax-dot-1,
+  .parallax-dot-2,
+  .parallax-dot-3,
+  .parallax-dot-4,
+  .parallax-dot-5 {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-circle,
+  .parallax-dot {
+    transform: none !important;
+    animation: none !important;
+  }
+}

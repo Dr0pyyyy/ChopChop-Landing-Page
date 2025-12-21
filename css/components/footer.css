@@ -60,6 +60,15 @@
   object-fit: contain;
 }
 
+/* Dark theme adjustments */
+[data-theme="dark"] .footer__social-link {
+  background: transparent;
+}
+
+[data-theme="dark"] .footer__social-icon {
+  filter: brightness(0) invert(1);
+}
+
 /* Tablet - 768px and up */
 @media (min-width: 768px) {
   .footer__container {

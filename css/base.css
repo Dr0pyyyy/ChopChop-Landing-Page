@@ -15,7 +15,7 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: var(--color-background);
+  background: var(--color-background);
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -45,64 +45,6 @@ a {
   color: inherit;
 }
 
-/* Background Line Pattern */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; /* Start from the very beginning */
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100%;
-  height: 100vh;
-  background-image: url('../icons/background-line.svg');
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100% auto;
-  z-index: 0;
-  pointer-events: none;
-  mask-image: linear-gradient(to bottom,
-    transparent 0%,
-    transparent 1%,
-    rgba(0, 0, 0, 0.1) 2%,
-    rgba(0, 0, 0, 0.3) 3%,
-    rgba(0, 0, 0, 0.6) 4%,
-    black 6%,
-    black 85%,
-    rgba(0, 0, 0, 0.9) 88%,
-    rgba(0, 0, 0, 0.7) 91%,
-    rgba(0, 0, 0, 0.5) 94%,
-    rgba(0, 0, 0, 0.3) 96%,
-    rgba(0, 0, 0, 0.15) 97%,
-    rgba(0, 0, 0, 0.05) 98%,
-    transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom,
-    transparent 0%,
-    transparent 1%,
-    rgba(0, 0, 0, 0.1) 2%,
-    rgba(0, 0, 0, 0.3) 3%,
-    rgba(0, 0, 0, 0.6) 4%,
-    black 6%,
-    black 85%,
-    rgba(0, 0, 0, 0.9) 88%,
-    rgba(0, 0, 0, 0.7) 91%,
-    rgba(0, 0, 0, 0.5) 94%,
-    rgba(0, 0, 0, 0.3) 96%,
-    rgba(0, 0, 0, 0.15) 97%,
-    rgba(0, 0, 0, 0.05) 98%,
-    transparent 100%);
-}
-
-/* Responsive background line adjustments */
-@media (max-width: 514px) {
-  body::before {
-    background-size: 514px auto;
-    background-position: top center;
-    min-width: 514px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
 
 /* Body scroll lock when menu is open */
 body.menu-open {
