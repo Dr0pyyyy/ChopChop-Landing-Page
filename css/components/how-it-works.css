@@ -113,7 +113,7 @@
 }
 
 .how-it-works__mockup-img {
-  height: 320px; /* 40 * 8px */
+  height: 380px; /* 47.5 * 8px - zvětšeno pro mobil */
   width: auto;
   display: block;
 }
@@ -181,46 +181,91 @@
   grid-row: 1;
 }
 
-/* Right mockup (mockup 1) - starts centered, moves right */
+/* Right mockup - starts straight (no rotation), visible from start */
 .how-it-works__mockup--right-cascade {
-  z-index: 3;
+  z-index: 5;
   opacity: 1;
-  transform: translateX(0) scale(1);
-  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms,
-              opacity 600ms ease 0ms;
+  transform: translateX(140px) translateY(20px) scale(1.1) rotate(8deg);
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms;
 }
 
-/* Center mockup (mockup 2) - starts hidden behind right */
+/* Floating animation for right mockup */
+@keyframes float-right {
+  0%, 100% {
+    animation: float-right-desktop 3s ease-in-out infinite;
+  }
+  50% {
+    transform: translateX(140px) translateY(15px) scale(1.1) rotate(9deg);
+  }
+}
+
+.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
+  animation: float-right 3s ease-in-out infinite;
+}
+
+/* Floating animations for center and left mockups */
+@keyframes float-center {
+  0%, 100% {
+    transform: translateX(0) translateY(25px) scale(1.1) rotate(0deg);
+  }
+  50% {
+    transform: translateX(0) translateY(20px) scale(1.1) rotate(-1deg);
+  }
+}
+
+@keyframes float-left {
+  0%, 100% {
+    transform: translateX(-80px) translateY(40px) scale(0.9) rotate(-8deg);
+  }
+  50% {
+    transform: translateX(-80px) translateY(35px) scale(0.9) rotate(-9deg);
+  }
+}
+
+.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
+  animation: float-center 3.5s ease-in-out infinite;
+}
+
+.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
+  animation: float-left 4s ease-in-out infinite;
+}
+
+/* Center mockup - starts from RIGHT position, slides to center */
 .how-it-works__mockup--center-cascade {
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
-  transform: translateX(0) scale(0.85);
+  transform: translateX(80px) translateY(10px) scale(0.6);
   transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 150ms,
               opacity 600ms ease 150ms;
 }
 
-/* Left mockup (mockup 3) - starts hidden behind center */
+/* Left mockup (New transaction screen) - starts from RIGHT position, slides to left */
 .how-it-works__mockup--left-cascade {
   z-index: 1;
   opacity: 0;
-  transform: translateX(0) scale(0.7);
+  transform: translateX(80px) translateY(10px) scale(0.6);
   transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms,
               opacity 600ms ease 300ms;
 }
 
 /* Animation active state for three mockups cascade */
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
-  transform: translateX(80px) translateY(0) scale(0.9) rotate(8deg);
+  opacity: 1;
+  transform: translateX(140px) translateY(20px) scale(1.1) rotate(8deg);
 }
 
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
   opacity: 1;
-  transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+  transform: translateX(0) translateY(25px) scale(1.1) rotate(0deg);
+  animation: float-center 3.5s ease-in-out infinite;
+  animation-delay: 600ms; /* Start floating after slide-in completes */
 }
 
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
   opacity: 1;
-  transform: translateX(-80px) translateY(64px) scale(0.85) rotate(-8deg);
+  transform: translateX(-80px) translateY(40px) scale(0.9) rotate(-8deg);
+  animation: float-left 4s ease-in-out infinite;
+  animation-delay: 900ms; /* Start floating after slide-in completes */
 }
 
 /* Bottom-Up Animation - Split the Bills */
@@ -402,15 +447,18 @@
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
-    transform: translateX(100px) translateY(0) scale(0.9) rotate(8deg);
+    opacity: 1;
+    transform: translateX(100px) translateY(20px) scale(1.0) rotate(8deg);
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
-    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+    opacity: 1;
+    transform: translateX(0) translateY(40px) scale(0.7) rotate(0deg);
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
-    transform: translateX(-100px) translateY(64px) scale(0.85) rotate(-8deg);
+    opacity: 1;
+    transform: translateX(-100px) translateY(60px) scale(0.5) rotate(-8deg);
   }
 
   /* Bottom-up mockups - tablet */
@@ -570,15 +618,22 @@
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
-    transform: translateX(120px) translateY(0) scale(0.9) rotate(8deg);
+    opacity: 1;
+    animation: float-right-desktop 3s ease-in-out infinite;
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
-    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+    opacity: 1;
+    transform: translateX(0) translateY(40px) scale(0.95) rotate(0deg);
+    animation: float-center-desktop 3.5s ease-in-out infinite;
+    animation-delay: 600ms;
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
-    transform: translateX(-120px) translateY(64px) scale(0.85) rotate(-8deg);
+    opacity: 1;
+    transform: translateX(-140px) translateY(60px) scale(0.75) rotate(-8deg);
+    animation: float-left-desktop 4s ease-in-out infinite;
+    animation-delay: 900ms;
   }
 
   /* Bottom-up mockups - desktop */
@@ -678,15 +733,22 @@
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
-    transform: translateX(140px) translateY(0) scale(0.9) rotate(8deg);
+    opacity: 1;
+    animation: float-right-desktop 3s ease-in-out infinite;
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
-    transform: translateX(0) translateY(32px) scale(0.9) rotate(0deg);
+    opacity: 1;
+    transform: translateX(0) translateY(40px) scale(0.95) rotate(0deg);
+    animation: float-center-desktop 3.5s ease-in-out infinite;
+    animation-delay: 600ms;
   }
 
   .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
-    transform: translateX(-140px) translateY(64px) scale(0.85) rotate(-8deg);
+    opacity: 1;
+    transform: translateX(-140px) translateY(60px) scale(0.75) rotate(-8deg);
+    animation: float-left-desktop 4s ease-in-out infinite;
+    animation-delay: 900ms;
   }
 
   /* Bottom-up mockups - large desktop */
@@ -757,5 +819,33 @@
 
   .how-it-works__feature-description-expanded p:last-child {
     margin-bottom: var(--spacing-2); /* Much smaller spacing after expanded text */
+  }
+}
+
+/* Desktop floating animation keyframes */
+@keyframes float-right-desktop {
+  0%, 100% {
+    transform: translateX(140px) translateY(20px) scale(1.1) rotate(8deg);
+  }
+  50% {
+    transform: translateX(140px) translateY(15px) scale(1.1) rotate(9deg);
+  }
+}
+
+@keyframes float-center-desktop {
+  0%, 100% {
+    transform: translateX(0) translateY(40px) scale(0.95) rotate(0deg);
+  }
+  50% {
+    transform: translateX(0) translateY(35px) scale(0.95) rotate(-1deg);
+  }
+}
+
+@keyframes float-left-desktop {
+  0%, 100% {
+    transform: translateX(-140px) translateY(60px) scale(0.75) rotate(-8deg);
+  }
+  50% {
+    transform: translateX(-140px) translateY(55px) scale(0.75) rotate(-9deg);
   }
 }
