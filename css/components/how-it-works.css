@@ -104,14 +104,14 @@
 /* Animation active state */
 .how-it-works__feature--animate .how-it-works__mockup--left {
   opacity: 1;
-  transform: translateX(-96px) scale(0.9) rotate(-5deg);
+  transform: translateX(-110px) scale(0.85) rotate(-12deg);
   animation: float-create-left 4s ease-in-out infinite;
   animation-delay: 900ms;
 }
 
 .how-it-works__feature--animate .how-it-works__mockup--right {
   opacity: 1;
-  transform: translateX(96px) scale(0.9) rotate(5deg);
+  transform: translateX(110px) scale(0.85) rotate(12deg);
   animation: float-create-right 3s ease-in-out infinite;
   animation-delay: 600ms;
 }
@@ -206,10 +206,10 @@
 /* Floating animation for right mockup */
 @keyframes float-right {
   0%, 100% {
-    animation: float-right-desktop 3s ease-in-out infinite;
+    transform: translateX(90px) translateY(20px) scale(1.1) rotate(5deg);
   }
   50% {
-    transform: translateX(140px) translateY(15px) scale(1.1) rotate(9deg);
+    transform: translateX(90px) translateY(15px) scale(1.1) rotate(6deg);
   }
 }
 
@@ -220,19 +220,19 @@
 /* Floating animations for center and left mockups */
 @keyframes float-center {
   0%, 100% {
-    transform: translateX(0) translateY(25px) scale(1.1) rotate(0deg);
+    transform: translateX(0) translateY(25px) scale(0.9) rotate(0deg);
   }
   50% {
-    transform: translateX(0) translateY(20px) scale(1.1) rotate(-1deg);
+    transform: translateX(0) translateY(20px) scale(0.9) rotate(-1deg);
   }
 }
 
 @keyframes float-left {
   0%, 100% {
-    transform: translateX(-80px) translateY(40px) scale(0.9) rotate(-5deg);
+    transform: translateX(-70px) translateY(40px) scale(0.75) rotate(-5deg);
   }
   50% {
-    transform: translateX(-80px) translateY(35px) scale(0.9) rotate(-9deg);
+    transform: translateX(-70px) translateY(35px) scale(0.75) rotate(-6deg);
   }
 }
 
@@ -284,19 +284,19 @@
 /* Animation active state for three mockups cascade */
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--right-cascade {
   opacity: 1;
-  transform: translateX(140px) translateY(20px) scale(1.1) rotate(5deg);
+  transform: translateX(90px) translateY(20px) scale(1.1) rotate(5deg);
 }
 
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--center-cascade {
   opacity: 1;
-  transform: translateX(0) translateY(25px) scale(1.1) rotate(0deg);
+  transform: translateX(0) translateY(25px) scale(0.9) rotate(0deg);
   animation: float-center 3.5s ease-in-out infinite;
   animation-delay: 600ms; /* Start floating after slide-in completes */
 }
 
 .how-it-works__feature--three-mockups.how-it-works__feature--animate .how-it-works__mockup--left-cascade {
   opacity: 1;
-  transform: translateX(-80px) translateY(40px) scale(0.9) rotate(-5deg);
+  transform: translateX(-70px) translateY(40px) scale(0.75) rotate(-5deg);
   animation: float-left 4s ease-in-out infinite;
   animation-delay: 900ms; /* Start floating after slide-in completes */
 }
@@ -1001,19 +1001,19 @@
 /* Create groups floating animations */
 @keyframes float-create-left {
   0%, 100% {
-    transform: translateX(-96px) translateY(0) scale(0.9) rotate(-5deg);
+    transform: translateX(-110px) translateY(0) scale(0.85) rotate(-12deg);
   }
   50% {
-    transform: translateX(-96px) translateY(-5px) scale(0.9) rotate(-6deg);
+    transform: translateX(-110px) translateY(-5px) scale(0.85) rotate(-13deg);
   }
 }
 
 @keyframes float-create-right {
   0%, 100% {
-    transform: translateX(96px) translateY(0) scale(0.9) rotate(5deg);
+    transform: translateX(110px) translateY(0) scale(0.85) rotate(12deg);
   }
   50% {
-    transform: translateX(96px) translateY(-5px) scale(0.9) rotate(6deg);
+    transform: translateX(110px) translateY(-5px) scale(0.85) rotate(13deg);
   }
 }
 
