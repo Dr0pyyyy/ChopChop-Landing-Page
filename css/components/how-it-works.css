@@ -395,7 +395,7 @@
   position: relative;
   filter: drop-shadow(0 0 0px rgba(160, 87, 255, 0));
   will-change: transform, filter;
-  transform: translateX(0) translateY(0) rotate(0deg);
+  transform: translateX(0) translateY(0) rotate(0deg) scale(0.6);
 }
 
 /* Explicitly disable any pseudo-elements on cards */
@@ -416,13 +416,17 @@
 
 /* Animated state - cards split apart */
 .how-it-works__feature--animate .how-it-works__single-img #card-left {
-  transform: translateX(-30px) translateY(12px) rotate(-5deg);
-  filter: drop-shadow(0 0 8px rgba(160, 87, 255, 0.3));
+  transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
+  filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  animation: card-float-left 4s ease-in-out infinite;
+  animation-delay: 800ms;
 }
 
 .how-it-works__feature--animate .how-it-works__single-img #card-right {
-  transform: translateX(30px) translateY(-12px) rotate(5deg);
-  filter: drop-shadow(0 0 8px rgba(160, 87, 255, 0.3));
+  transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
+  filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  animation: card-float-right 3.5s ease-in-out infinite;
+  animation-delay: 600ms;
 }
 
 /* Tablet - 768px and up */
@@ -534,15 +538,25 @@
     max-width: 520px;
   }
 
+  /* Basic card state - tablet */
+  .how-it-works__single-img #card-left,
+  .how-it-works__single-img #card-right {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(0.65);
+  }
+
   /* Broken card animation - tablet (stronger effect) */
   .how-it-works__feature--animate .how-it-works__single-img #card-left {
-    transform: translateX(-35px) translateY(15px) rotate(-6deg);
-    filter: drop-shadow(0 0 10px rgba(160, 87, 255, 0.4));
+    transform: translateX(-40px) translateY(18px) rotate(-8deg) scale(0.65);
+    filter: drop-shadow(0 0 14px rgba(160, 87, 255, 0.5)) brightness(1.06);
+    animation: card-float-left-tablet 4s ease-in-out infinite;
+    animation-delay: 800ms;
   }
 
   .how-it-works__feature--animate .how-it-works__single-img #card-right {
-    transform: translateX(35px) translateY(-15px) rotate(6deg);
-    filter: drop-shadow(0 0 10px rgba(160, 87, 255, 0.4));
+    transform: translateX(40px) translateY(-18px) rotate(8deg) scale(0.65);
+    filter: drop-shadow(0 0 14px rgba(160, 87, 255, 0.5)) brightness(1.06);
+    animation: card-float-right-tablet 3.5s ease-in-out infinite;
+    animation-delay: 600ms;
   }
 }
 
@@ -727,15 +741,25 @@
     max-width: 620px;
   }
 
+  /* Basic card state - desktop */
+  .how-it-works__single-img #card-left,
+  .how-it-works__single-img #card-right {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(0.7);
+  }
+
   /* Broken card animation - desktop (even stronger effect) */
   .how-it-works__feature--animate .how-it-works__single-img #card-left {
-    transform: translateX(-40px) translateY(18px) rotate(-7deg);
-    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.5));
+    transform: translateX(-45px) translateY(22px) rotate(-9deg) scale(0.7);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.6)) brightness(1.08);
+    animation: card-float-left-desktop 4s ease-in-out infinite;
+    animation-delay: 800ms;
   }
 
   .how-it-works__feature--animate .how-it-works__single-img #card-right {
-    transform: translateX(40px) translateY(-18px) rotate(7deg);
-    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.5));
+    transform: translateX(45px) translateY(-22px) rotate(9deg) scale(0.7);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.6)) brightness(1.08);
+    animation: card-float-right-desktop 3.5s ease-in-out infinite;
+    animation-delay: 600ms;
   }
 }
 
@@ -860,15 +884,25 @@
     max-width: 680px;
   }
 
+  /* Basic card state - large desktop */
+  .how-it-works__single-img #card-left,
+  .how-it-works__single-img #card-right {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(0.75);
+  }
+
   /* Broken card animation - large desktop (strongest effect) */
   .how-it-works__feature--animate .how-it-works__single-img #card-left {
-    transform: translateX(-45px) translateY(20px) rotate(-5deg);
-    filter: drop-shadow(0 0 15px rgba(160, 87, 255, 0.6));
+    transform: translateX(-50px) translateY(25px) rotate(-10deg) scale(0.75);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+    animation: card-float-left-large 4s ease-in-out infinite;
+    animation-delay: 800ms;
   }
 
   .how-it-works__feature--animate .how-it-works__single-img #card-right {
-    transform: translateX(45px) translateY(-20px) rotate(5deg);
-    filter: drop-shadow(0 0 15px rgba(160, 87, 255, 0.6));
+    transform: translateX(50px) translateY(-25px) rotate(10deg) scale(0.75);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+    animation: card-float-right-large 3.5s ease-in-out infinite;
+    animation-delay: 600ms;
   }
 }
 
@@ -995,6 +1029,98 @@
   }
   50% {
     transform: translateX(-120px) scale(1) rotate(-6deg) translateY(-5px);
+  }
+}
+
+/* Credit card floating animations */
+@keyframes card-float-left {
+  0%, 100% {
+    transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
+    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  }
+  50% {
+    transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.61);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+  }
+}
+
+@keyframes card-float-right {
+  0%, 100% {
+    transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
+    filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  }
+  50% {
+    transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.61);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+  }
+}
+
+/* Credit card floating animations - tablet */
+@keyframes card-float-left-tablet {
+  0%, 100% {
+    transform: translateX(-40px) translateY(18px) rotate(-8deg) scale(0.65);
+    filter: drop-shadow(0 0 14px rgba(160, 87, 255, 0.5)) brightness(1.06);
+  }
+  50% {
+    transform: translateX(-43px) translateY(21px) rotate(-9deg) scale(0.66);
+    filter: drop-shadow(0 0 18px rgba(160, 87, 255, 0.6)) brightness(1.09);
+  }
+}
+
+@keyframes card-float-right-tablet {
+  0%, 100% {
+    transform: translateX(40px) translateY(-18px) rotate(8deg) scale(0.65);
+    filter: drop-shadow(0 0 14px rgba(160, 87, 255, 0.5)) brightness(1.06);
+  }
+  50% {
+    transform: translateX(43px) translateY(-21px) rotate(9deg) scale(0.66);
+    filter: drop-shadow(0 0 18px rgba(160, 87, 255, 0.6)) brightness(1.09);
+  }
+}
+
+/* Credit card floating animations - desktop */
+@keyframes card-float-left-desktop {
+  0%, 100% {
+    transform: translateX(-45px) translateY(22px) rotate(-9deg) scale(0.7);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.6)) brightness(1.08);
+  }
+  50% {
+    transform: translateX(-48px) translateY(25px) rotate(-10deg) scale(0.71);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+  }
+}
+
+@keyframes card-float-right-desktop {
+  0%, 100% {
+    transform: translateX(45px) translateY(-22px) rotate(9deg) scale(0.7);
+    filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.6)) brightness(1.08);
+  }
+  50% {
+    transform: translateX(48px) translateY(-25px) rotate(10deg) scale(0.71);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+  }
+}
+
+/* Credit card floating animations - large desktop */
+@keyframes card-float-left-large {
+  0%, 100% {
+    transform: translateX(-50px) translateY(25px) rotate(-10deg) scale(0.75);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+  }
+  50% {
+    transform: translateX(-53px) translateY(28px) rotate(-11deg) scale(0.76);
+    filter: drop-shadow(0 0 24px rgba(160, 87, 255, 0.8)) brightness(1.12);
+  }
+}
+
+@keyframes card-float-right-large {
+  0%, 100% {
+    transform: translateX(50px) translateY(-25px) rotate(10deg) scale(0.75);
+    filter: drop-shadow(0 0 20px rgba(160, 87, 255, 0.7)) brightness(1.1);
+  }
+  50% {
+    transform: translateX(53px) translateY(-28px) rotate(11deg) scale(0.76);
+    filter: drop-shadow(0 0 24px rgba(160, 87, 255, 0.8)) brightness(1.12);
   }
 }
 
