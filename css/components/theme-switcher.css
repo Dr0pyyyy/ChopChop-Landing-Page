@@ -103,7 +103,12 @@
   height: 24px;
   transition: opacity 0.4s ease, transform 0.3s ease;
   position: absolute;
-  filter: invert(1);
+  filter: brightness(0) saturate(0); /* Black icons in light mode */
+}
+
+/* Dark theme - white icons */
+[data-theme="dark"] .menu-overlay__theme-icon {
+  filter: brightness(0) invert(1); /* White icons in dark mode */
 }
 
 .menu-overlay__theme-icon--moon {
@@ -122,20 +127,7 @@
   opacity: 1;
 }
 
-/* Update language switcher positioning */
-.menu-overlay__language-switcher {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
-  display: flex;
-  justify-content: center;
-}
-
-.menu-overlay__language-btn {
-  width: 100%;
-  max-width: 200px;
-  justify-content: center;
-}
+/* Language switcher styles are in language-switcher.css */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

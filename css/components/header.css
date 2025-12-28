@@ -63,6 +63,12 @@ body {
 .header__menu-icon {
   width: var(--spacing-4);
   height: var(--spacing-4);
+  filter: brightness(0) saturate(0); /* Black in light mode */
+}
+
+/* Dark theme - white hamburger icon */
+[data-theme="dark"] .header__menu-icon {
+  filter: brightness(0) invert(1); /* White in dark mode */
 }
 
 /* Menu Overlay - Slide-in from right */
@@ -116,6 +122,12 @@ body {
 .menu-overlay__close-icon {
   width: var(--spacing-4);
   height: var(--spacing-4);
+  filter: brightness(0) saturate(0); /* Black in light mode */
+}
+
+/* Dark theme - white close icon */
+[data-theme="dark"] .menu-overlay__close-icon {
+  filter: brightness(0) invert(1); /* White in dark mode */
 }
 
 /* Desktop Navigation - Hidden on mobile */

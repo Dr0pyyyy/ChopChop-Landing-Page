@@ -112,6 +112,10 @@
   .language-switcher {
     display: none; /* Hide desktop switcher on mobile */
   }
+
+  .menu-overlay__language-switcher {
+    display: flex; /* Explicitly show mobile switcher on mobile */
+  }
 }
 
 @media (min-width: 769px) {
