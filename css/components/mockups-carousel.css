@@ -68,12 +68,14 @@
 }
 
 .mockups-carousel__container {
-  display: flex !important;
+  display: flex;
   gap: 24px; /* 3 * 8px */
   height: 100%;
-  width: 160% !important; /* Good overflow - 30% na každou stranu */
+  width: 145%; /* Optimized width for better performance */
   margin: 0;
-  transform: translateX(-50%) translateX(50vw) !important; /* Perfect center - overflow on both sides */
+  padding-top: 40px; /* 5 * 8px top padding */
+  padding-bottom: 40px; /* 5 * 8px bottom padding */
+  transform: translateX(-50%) translateX(50vw); /* Perfect center - overflow on both sides */
 }
 
 /* Column wrapper */
@@ -96,8 +98,8 @@
 
 /* Individual mockup image */
 .mockups-carousel__mockup {
-  width: 100% !important;
-  max-width: 580px !important; /* Bigger size - compromise between small and huge */
+  width: 100%;
+  max-width: 420px; /* Optimized size for performance */
   height: auto;
   display: block;
   border-radius: 16px; /* 2 * 8px */

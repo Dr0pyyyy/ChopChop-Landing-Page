@@ -1,0 +1,79 @@
+/* iOS Safari optimizations for better performance */
+
+/* iOS Safari detection and performance optimizations */
+@supports (-webkit-overflow-scrolling: touch) {
+  /* Disable complex animations on iOS for better performance */
+  .how-it-works__single-img #card-left,
+  .how-it-works__single-img #card-right {
+    animation: none !important;
+    transition: transform 0.2s ease !important;
+    will-change: auto !important;
+    filter: none !important;
+  }
+
+  /* Mobile optimized card transforms */
+  @media (max-width: 767px) {
+    .how-it-works__feature--animate .how-it-works__single-img #card-left {
+      transform: translateX(-25px) translateY(12px) scale(0.95) !important;
+    }
+
+    .how-it-works__feature--animate .how-it-works__single-img #card-right {
+      transform: translateX(25px) translateY(-12px) scale(0.95) !important;
+    }
+  }
+
+  /* Tablet and desktop fallbacks */
+  @media (min-width: 768px) {
+    .how-it-works__feature--animate .how-it-works__single-img #card-left {
+      transform: translateX(-30px) translateY(15px) scale(0.9) !important;
+    }
+
+    .how-it-works__feature--animate .how-it-works__single-img #card-right {
+      transform: translateX(30px) translateY(-15px) scale(0.9) !important;
+    }
+  }
+
+  /* Simplify hover effects on mobile for better touch performance */
+  @media (max-width: 768px) {
+    .currency-slider__icon:hover,
+    .currency-slider__icon:active {
+      transform: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+  }
+
+  /* Optimize rendering for iOS Safari */
+  .how-it-works__mockup-img,
+  .how-it-works__single-img,
+  .currency-slider__track {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Reduce paint complexity on mobile */
+  .mockups-carousel__column-inner {
+    will-change: transform;
+    contain: layout style paint;
+  }
+}
+
+/* iOS 12 and older compatibility fixes */
+@supports (not (backdrop-filter: blur())) {
+  .how-it-works__single-img #card-left,
+  .how-it-works__single-img #card-right {
+    animation: none !important;
+    transition: transform 0.1s ease !important;
+  }
+
+  /* Disable backdrop blur fallbacks */
+  .header {
+    background-color: rgba(242, 242, 242, 0.95) !important;
+    backdrop-filter: none !important;
+  }
+
+  [data-theme="dark"] .header {
+    background-color: rgba(26, 26, 26, 0.95) !important;
+  }
+}
