@@ -43,6 +43,16 @@
   max-width: 600px;
 }
 
+/* Prevent text wrapping for currency feature title */
+.how-it-works__feature--currency .how-it-works__feature-title {
+  white-space: nowrap;
+}
+
+/* Adjust underline for currency feature title */
+.how-it-works__feature--currency .how-it-works__underline {
+  width: 100%; /* Full width of the nowrap text */
+}
+
 .how-it-works__underline {
   position: absolute;
   bottom: -8px;

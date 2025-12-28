@@ -51,7 +51,7 @@ class LanguageSwitcher {
         'feature-create-groups-expanded-1': 'Set up a group for your friends, family, or colleagues and keep all your shared expenses perfectly organized in one place.',
         'feature-create-groups-expanded-2': 'Whether you\'re planning a trip, sharing rent, or just keeping track of everyday costs, it\'s the easiest way to stay on top of who owes what.',
         'feature-invite-friends-expanded-1': 'Invite your friends, family, or teammates using a simple QR code or link and start sharing expenses right away.',
-        'feature-invite-friends-expanded-2': 'You can even add virtual members to include everyone in the balance — great for tracking costs for kids, guests, or anyone who\'s not in the app yet.',
+        'feature-invite-friends-expanded-2': 'You can add virtual members to include everyone in the balance. Great for tracking costs for kids, guests, or anyone who\'s not in the app yet.',
         'feature-add-transactions-expanded-1': 'Easily record who paid what in any currency and keep your group finances crystal clear.',
         'feature-add-transactions-expanded-2': 'Whether you\'re traveling abroad or managing shared expenses at home, you\'ll always stay in control of your payments and balances.',
         'feature-split-bills-expanded-1': 'ChopChop takes care of the math for you — it automatically figures out who owes whom and splits every bill fairly.',
@@ -67,7 +67,7 @@ class LanguageSwitcher {
 
         // Hero sekce
         'hero-headline': 'Rozdělení účtů, rychle a jednoduše',
-        'hero-description': 'Skupinové výdaje bez starostí. S ChopChopem vždy víte, kdo komu dluží – žádné komplikace, zmatek nebo nekonečné počítání.',
+        'hero-description': 'Skupinové výdaje bez starostí. S ChopChopem vždy víte, kdo komu dluží, žádné komplikace, zmatek nebo nekonečné počítání.',
 
         // Jak to funguje sekce
         'section-how-it-works': 'Jak to funguje',
@@ -103,13 +103,13 @@ class LanguageSwitcher {
         'form-submit': 'Spojit se s námi',
 
         // Rozšířené popisy
-        'feature-create-groups-expanded-1': 'Nastavte skupinu pro přátele, rodinu nebo kolegy a uchovejte všechny sdílené výdaje perfektně organizované na jednom místě.',
+        'feature-create-groups-expanded-1': 'Vytvořte skupinu pro přátele, rodinu nebo kolegy a uchovejte všechny sdílené výdaje perfektně organizované na jednom místě.',
         'feature-create-groups-expanded-2': 'Ať už plánujete výlet, sdílíte nájem, nebo jen sledujete běžné náklady, je to nejsnazší způsob, jak mít přehled o tom, kdo komu dluží.',
         'feature-invite-friends-expanded-1': 'Pozvěte přátele, rodinu nebo kolegy pomocí jednoduchého QR kódu nebo odkazu a začněte okamžitě sdílet výdaje.',
-        'feature-invite-friends-expanded-2': 'Můžete dokonce přidat virtuální členy, abyste zahrnuli všechny do bilanace — skvělé pro sledování nákladů dětí, hostů nebo kohokoli, kdo ještě nemá aplikaci.',
-        'feature-add-transactions-expanded-1': 'Snadno zaznamenejte, kdo co zaplatil v jakékoli měně a udržujte finance vaší skupiny křišťálově čisté.',
+        'feature-invite-friends-expanded-2': 'Můžete přidat virtuální členy, abyste zahrnuli všechny do skupiny, skvělé pro sledování výdajů dětí, hostů nebo kohokoli, kdo ještě nemá aplikaci.',
+        'feature-add-transactions-expanded-1': 'Snadno zaznamenejte, kdo co zaplatil v jakékoli měně a udržujte finance vaší skupiny čisté a přehledné.',
         'feature-add-transactions-expanded-2': 'Ať už cestujete do zahraničí nebo spravujete sdílené výdaje doma, vždy budete mít kontrolu nad svými platbami a zůstatky.',
-        'feature-split-bills-expanded-1': 'ChopChop se postará o matematiku za vás — automaticky zjistí, kdo komu dluží a spravedlivě rozdělí každý účet.',
+        'feature-split-bills-expanded-1': 'ChopChop se postará o matematiku za vás, automaticky zjistí, kdo komu dluží a spravedlivě rozdělí každý účet.',
         'feature-split-bills-expanded-2': 'Ať už jde o večeři s přáteli, skupinový výlet nebo sdílený nájem, vždy budete přesně vědět, jak na tom všichni jsou.',
         'feature-no-card-expanded-1': 'Nastavení účtu trvá jen několik okamžiků a budete připraveni okamžitě začít. Je to jednoduché, bezpečné a navržené tak, aby vám usnadnilo život.',
       }

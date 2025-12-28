@@ -3,12 +3,12 @@
   margin-top: 192px; /* 24 * 8px - větší mezery */
 }
 
-/* Keyframes for horizontal scroll */
+/* Keyframes for horizontal scroll - seamless infinite loop */
 @keyframes scroll-left {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: row;
   gap: 24px; /* 3 * 8px - larger spacing */
-  animation: scroll-left 15s linear infinite; /* Faster - 15s */
+  animation: scroll-left 30s linear infinite; /* Slower for more currencies - 30s */
   will-change: transform;
 }
 
@@ -59,9 +59,9 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Icon image inside - larger SVG */
+/* Icon image inside - larger SVG and PNG */
 .currency-slider__icon-img {
-  width: 75%; /* Larger SVG - 75% of container */
+  width: 75%; /* Larger icon - 75% of container */
   height: 75%;
   object-fit: contain;
   filter: brightness(0) invert(1); /* Make icons white */
@@ -72,6 +72,11 @@
   background: linear-gradient(135deg, #6B35B3 0%, #5A2D9A 100%);
 }
 
+/* Dark theme - make icons same color as page background */
+[data-theme="dark"] .currency-slider__icon-img {
+  filter: brightness(0) saturate(0) sepia(1) hue-rotate(0deg) brightness(0.1); /* Make icons dark like page background (#1a1a1a) */
+}
+
 /* Tablet and up - larger icons, slower */
 @media (min-width: 768px) {
   .currency-slider__icon {
@@ -80,6 +85,6 @@
   }
 
   .currency-slider__track {
-    animation: scroll-left 22s linear infinite; /* Faster on tablet/desktop - 22s */
+    animation: scroll-left 45s linear infinite; /* Slower on tablet/desktop for more currencies - 45s */
   }
 }
