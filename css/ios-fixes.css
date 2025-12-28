@@ -1,14 +1,77 @@
-/* iOS Safari optimizations for better performance */
+/* iOS Safari optimizations - aggressive performance fixes */
 
-/* iOS Safari detection and performance optimizations */
+/* Complete iOS Safari animation disable */
 @supports (-webkit-overflow-scrolling: touch) {
-  /* Disable complex animations on iOS for better performance */
+  /* Disable ALL carousel animations on iOS Safari */
+  .mockups-carousel__column-inner {
+    animation: none !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Completely replace carousel with simple grid on iOS */
+  .mockups-carousel {
+    height: auto !important;
+    padding: 40px 20px !important;
+  }
+
+  .mockups-carousel__container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    padding: 0 !important;
+  }
+
+  .mockups-carousel__column {
+    position: static !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .mockups-carousel__column-inner {
+    display: block !important;
+  }
+
+  .mockups-carousel__mockup {
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide extra columns on mobile iOS */
+  .mockups-carousel__column--4,
+  .mockups-carousel__column--5,
+  .mockups-carousel__column--6,
+  .mockups-carousel__column--7,
+  .mockups-carousel__column--8,
+  .mockups-carousel__column--9 {
+    display: none !important;
+  }
+
+  /* Force static positioning for mockup columns */
+  .mockups-carousel__column--left .mockups-carousel__column-inner,
+  .mockups-carousel__column--center .mockups-carousel__column-inner,
+  .mockups-carousel__column--right .mockups-carousel__column-inner {
+    animation: none !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Disable credit card animations completely */
   .how-it-works__single-img #card-left,
   .how-it-works__single-img #card-right {
     animation: none !important;
-    transition: transform 0.2s ease !important;
+    transition: none !important;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
     will-change: auto !important;
     filter: none !important;
+  }
+
+  /* Keep cards static even when animated class is added */
+  .how-it-works__feature--animate .how-it-works__single-img #card-left,
+  .how-it-works__feature--animate .how-it-works__single-img #card-right {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
   }
 
   /* Mobile optimized card transforms */

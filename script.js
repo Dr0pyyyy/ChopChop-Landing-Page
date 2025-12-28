@@ -1,3 +1,47 @@
+// iOS Safari Detection and Animation Disabler
+(function() {
+  'use strict';
+
+  // Aggressive iOS Safari detection
+  function isiOSSafari() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  // Disable animations completely on iOS Safari
+  if (isiOSSafari()) {
+    // Add CSS class to body for iOS-specific styling
+    document.documentElement.classList.add('ios-safari');
+
+    // Disable all CSS animations and transitions
+    const style = document.createElement('style');
+    style.textContent = `
+      .ios-safari .mockups-carousel__column-inner {
+        animation: none !important;
+        transform: translateY(0) !important;
+      }
+      .ios-safari .how-it-works__single-img #card-left,
+      .ios-safari .how-it-works__single-img #card-right {
+        animation: none !important;
+        transition: none !important;
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
+        filter: none !important;
+      }
+      .ios-safari .how-it-works__feature--animate .how-it-works__single-img #card-left,
+      .ios-safari .how-it-works__feature--animate .how-it-works__single-img #card-right {
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
+      }
+      .ios-safari * {
+        -webkit-transform: none !important;
+        transform: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    console.log('iOS Safari detected - animations disabled');
+  }
+
+})();
+
 // ChopChop Landing Page - Menu Functionality
 // Handles hamburger menu open/close with slide-in animation
 
@@ -209,8 +253,19 @@
 (function() {
   'use strict';
 
+  // Check if iOS Safari - if so, skip all animations
+  function isiOSSafari() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
   // DOM Elements
   const features = document.querySelectorAll('.how-it-works__feature');
+
+  // Skip all animations on iOS Safari
+  if (isiOSSafari()) {
+    console.log('iOS Safari detected - skipping scroll animations');
+    return;
+  }
 
   // Check if Intersection Observer is supported
   if ('IntersectionObserver' in window) {
