@@ -1,124 +1,66 @@
-/* iOS Safari optimizations - aggressive performance fixes */
+/* iOS Safari optimizations for better performance */
 
-/* Complete iOS Safari animation disable */
+/* Mobile-only iOS Safari optimizations */
 @supports (-webkit-overflow-scrolling: touch) {
-  /* Disable ALL carousel animations on iOS Safari */
-  .mockups-carousel__column-inner {
-    animation: none !important;
-    transform: translateY(0) !important;
-  }
+  @media (max-width: 1024px) {
+    /* Simplified carousel animation - slower and smoother for mobile */
+    .mockups-carousel__column-inner {
+      animation-duration: 60s !important; /* Much slower */
+      animation-timing-function: linear !important;
+      animation-iteration-count: infinite !important;
+      will-change: transform !important;
+      backface-visibility: hidden !important;
+      transform: translateZ(0) !important; /* Force hardware acceleration */
+    }
 
-  /* Completely replace carousel with simple grid on iOS */
-  .mockups-carousel {
-    height: auto !important;
-    padding: 40px 20px !important;
-  }
+    /* Optimize carousel structure for mobile */
+    .mockups-carousel__container {
+      width: 120% !important; /* Smaller width for better performance */
+    }
 
-  .mockups-carousel__container {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-    width: 100% !important;
-    max-width: 600px !important;
-    margin: 0 auto !important;
-    transform: none !important;
-    padding: 0 !important;
-  }
+    .mockups-carousel__mockup {
+      max-width: 300px !important; /* Smaller images for better performance */
+    }
 
-  .mockups-carousel__column {
-    position: static !important;
-    overflow: visible !important;
-    display: block !important;
-  }
+    /* Simplified credit card animations for mobile */
+    .how-it-works__single-img #card-left,
+    .how-it-works__single-img #card-right {
+      animation: none !important;
+      transition: transform 0.4s ease !important;
+      will-change: transform !important;
+      filter: none !important; /* Remove expensive filters */
+    }
 
-  .mockups-carousel__column-inner {
-    display: block !important;
-  }
-
-  .mockups-carousel__mockup {
-    margin-bottom: 20px !important;
-    max-width: 100% !important;
-  }
-
-  /* Hide extra columns on mobile iOS */
-  .mockups-carousel__column--4,
-  .mockups-carousel__column--5,
-  .mockups-carousel__column--6,
-  .mockups-carousel__column--7,
-  .mockups-carousel__column--8,
-  .mockups-carousel__column--9 {
-    display: none !important;
-  }
-
-  /* Force static positioning for mockup columns */
-  .mockups-carousel__column--left .mockups-carousel__column-inner,
-  .mockups-carousel__column--center .mockups-carousel__column-inner,
-  .mockups-carousel__column--right .mockups-carousel__column-inner {
-    animation: none !important;
-    transform: translateY(0) !important;
-  }
-
-  /* Disable credit card animations completely */
-  .how-it-works__single-img #card-left,
-  .how-it-works__single-img #card-right {
-    animation: none !important;
-    transition: none !important;
-    transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
-    will-change: auto !important;
-    filter: none !important;
-  }
-
-  /* Keep cards static even when animated class is added */
-  .how-it-works__feature--animate .how-it-works__single-img #card-left,
-  .how-it-works__feature--animate .how-it-works__single-img #card-right {
-    transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
-  }
-
-  /* Mobile optimized card transforms */
-  @media (max-width: 767px) {
     .how-it-works__feature--animate .how-it-works__single-img #card-left {
-      transform: translateX(-25px) translateY(12px) scale(0.95) !important;
+      transform: translateX(-15px) translateY(6px) rotate(-2deg) scale(0.99) !important;
     }
 
     .how-it-works__feature--animate .how-it-works__single-img #card-right {
-      transform: translateX(25px) translateY(-12px) scale(0.95) !important;
-    }
-  }
-
-  /* Tablet and desktop fallbacks */
-  @media (min-width: 768px) {
-    .how-it-works__feature--animate .how-it-works__single-img #card-left {
-      transform: translateX(-30px) translateY(15px) scale(0.9) !important;
+      transform: translateX(15px) translateY(-6px) rotate(2deg) scale(0.99) !important;
     }
 
-    .how-it-works__feature--animate .how-it-works__single-img #card-right {
-      transform: translateX(30px) translateY(-15px) scale(0.9) !important;
-    }
-  }
-
-  /* Simplify hover effects on mobile for better touch performance */
-  @media (max-width: 768px) {
+    /* Simplify hover effects on mobile for better touch performance */
     .currency-slider__icon:hover,
     .currency-slider__icon:active {
       transform: none !important;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
     }
-  }
 
-  /* Optimize rendering for iOS Safari */
-  .how-it-works__mockup-img,
-  .how-it-works__single-img,
-  .currency-slider__track {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
+    /* Optimize rendering for iOS Safari mobile */
+    .how-it-works__mockup-img,
+    .how-it-works__single-img,
+    .currency-slider__track {
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
 
-  /* Reduce paint complexity on mobile */
-  .mockups-carousel__column-inner {
-    will-change: transform;
-    contain: layout style paint;
+    /* Reduce paint complexity on mobile */
+    .mockups-carousel__column-inner {
+      will-change: transform;
+      contain: layout style paint;
+    }
   }
 }
 
@@ -130,13 +72,14 @@
     transition: transform 0.1s ease !important;
   }
 
-  /* Disable backdrop blur fallbacks */
-  .header {
+  /* Disable backdrop blur fallbacks only for very old iOS */
+  .header.scrolled {
     background-color: rgba(242, 242, 242, 0.95) !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
-  [data-theme="dark"] .header {
+  [data-theme="dark"] .header.scrolled {
     background-color: rgba(26, 26, 26, 0.95) !important;
   }
 }

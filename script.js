@@ -12,33 +12,61 @@
     // Add CSS class to body for iOS-specific styling
     document.documentElement.classList.add('ios-safari');
 
-    // Disable all CSS animations and transitions
+    // Disable only problematic animations, preserve menu and other smooth animations
     const style = document.createElement('style');
     style.textContent = `
+      /* Only disable carousel infinite scroll animations */
       .ios-safari .mockups-carousel__column-inner {
         animation: none !important;
         transform: translateY(0) !important;
       }
+
+      /* Simplified credit card animations for iOS */
       .ios-safari .how-it-works__single-img #card-left,
       .ios-safari .how-it-works__single-img #card-right {
-        animation: none !important;
-        transition: none !important;
-        transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
-        filter: none !important;
+        transition: transform 0.4s ease !important;
+        filter: none !important; /* Remove expensive filters */
+        will-change: transform !important;
+        backface-visibility: hidden !important;
       }
-      .ios-safari .how-it-works__feature--animate .how-it-works__single-img #card-left,
+
+      .ios-safari .how-it-works__feature--animate .how-it-works__single-img #card-left {
+        transform: translateX(-20px) translateY(8px) rotate(-3deg) scale(0.98) !important;
+      }
+
       .ios-safari .how-it-works__feature--animate .how-it-works__single-img #card-right {
-        transform: translateX(0) translateY(0) rotate(0deg) scale(1) !important;
+        transform: translateX(20px) translateY(-8px) rotate(3deg) scale(0.98) !important;
       }
-      .ios-safari * {
-        -webkit-transform: none !important;
-        transform: none !important;
-      }
+
+      /* Preserve all other animations - menu, hover effects, etc. */
+      /* Do NOT apply transform: none to everything */
     `;
     document.head.appendChild(style);
 
-    console.log('iOS Safari detected - animations disabled');
+    console.log('iOS Safari detected - carousel animations disabled');
   }
+
+})();
+
+// ChopChop Landing Page - Header Scroll Effect
+// Adds liquid glass effect when scrolling
+(function() {
+  'use strict';
+
+  const header = document.querySelector('.header');
+
+  if (!header) return;
+
+  // Add scroll event listener
+  window.addEventListener('scroll', function() {
+    const scrolled = window.scrollY > 10; // Trigger after scrolling 10px
+
+    if (scrolled) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true }); // Use passive for better performance
 
 })();
 
@@ -56,6 +84,9 @@
 
   // State
   let isMenuOpen = false;
+
+  // Debug for iOS
+  console.log('Menu script loaded, initial menu state:', isMenuOpen);
 
   /**
    * Opens the menu overlay with slide-in animation from right
@@ -131,12 +162,27 @@
 
   // Toggle menu when hamburger button is clicked
   if (menuBtn) {
-    menuBtn.addEventListener('click', toggleMenu);
+    // Use touchstart on mobile for better responsiveness, click on desktop
+    if ('ontouchstart' in window) {
+      menuBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        toggleMenu();
+      });
+    } else {
+      menuBtn.addEventListener('click', toggleMenu);
+    }
   }
 
   // Close menu when close button in overlay is clicked
   if (closeBtn) {
-    closeBtn.addEventListener('click', closeMenu);
+    if ('ontouchstart' in window) {
+      closeBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        closeMenu();
+      });
+    } else {
+      closeBtn.addEventListener('click', closeMenu);
+    }
   }
 
   // Close menu when Escape key is pressed (accessibility)
@@ -261,10 +307,10 @@
   // DOM Elements
   const features = document.querySelectorAll('.how-it-works__feature');
 
-  // Skip all animations on iOS Safari
-  if (isiOSSafari()) {
-    console.log('iOS Safari detected - skipping scroll animations');
-    return;
+  // Check iOS Safari - allow phone mockup animations but skip broken card animations
+  const isIOSSafari = isiOSSafari();
+  if (isIOSSafari) {
+    console.log('iOS Safari detected - enabling safe scroll animations');
   }
 
   // Check if Intersection Observer is supported
@@ -284,9 +330,13 @@
           // Add animation class to trigger mockup slide-in
           entry.target.classList.add('how-it-works__feature--animate');
 
-          // Create particles for broken card animation
+          // Create particles for broken card animation (simplified on iOS Safari)
           if (entry.target.classList.contains('how-it-works__feature--no-card')) {
-            createCardParticles(entry.target);
+            if (isIOSSafari) {
+              createCardParticlesSimplified(entry.target);
+            } else {
+              createCardParticles(entry.target);
+            }
           }
 
           // Optional: unobserve after animation to prevent re-triggering
@@ -306,6 +356,44 @@
     features.forEach(function(feature) {
       feature.classList.add('how-it-works__feature--animate');
     });
+  }
+
+  /**
+   * Creates simplified particles for iOS Safari
+   * Much simpler animation without complex transforms
+   */
+  function createCardParticlesSimplified(feature) {
+    const container = feature.querySelector('.how-it-works__mockups--single');
+    if (!container) return;
+
+    // Only 3 simple particles for iOS
+    for (let i = 0; i < 3; i++) {
+      const particle = document.createElement('div');
+      particle.style.width = '2px';
+      particle.style.height = '10px';
+      particle.style.background = '#A057FF';
+      particle.style.position = 'absolute';
+      particle.style.top = '50%';
+      particle.style.left = '50%';
+      particle.style.opacity = '0';
+      particle.style.transition = 'all 0.3s ease';
+
+      container.appendChild(particle);
+
+      // Simple fade in/out
+      setTimeout(() => {
+        particle.style.opacity = '1';
+        particle.style.transform = 'translateX(' + (Math.random() * 60 - 30) + 'px) translateY(' + (Math.random() * 60 - 30) + 'px)';
+      }, 10);
+
+      setTimeout(() => {
+        particle.style.opacity = '0';
+      }, 200);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 500);
+    }
   }
 
   /**
