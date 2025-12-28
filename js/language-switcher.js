@@ -1,7 +1,7 @@
 // Language switcher functionality
 class LanguageSwitcher {
   constructor() {
-    this.currentLanguage = localStorage.getItem('language') || 'en';
+    this.currentLanguage = this.getInitialLanguage();
     this.translations = {
       en: {
         // Navigation
@@ -116,6 +116,27 @@ class LanguageSwitcher {
     };
 
     this.init();
+  }
+
+  getInitialLanguage() {
+    // Priority: localStorage > browser language > default (en)
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      return savedLanguage;
+    }
+
+    // Check browser language
+    const browserLanguage = navigator.language || navigator.languages?.[0];
+    if (browserLanguage) {
+      // Check if browser language starts with 'cs' (Czech) or contains 'Czech'
+      if (browserLanguage.toLowerCase().startsWith('cs') ||
+          browserLanguage.toLowerCase().includes('czech') ||
+          browserLanguage.toLowerCase().startsWith('cz')) {
+        return 'cz';
+      }
+    }
+
+    return 'en';
   }
 
   init() {

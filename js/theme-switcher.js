@@ -1,14 +1,45 @@
 // Theme switcher functionality
 class ThemeSwitcher {
   constructor() {
-    this.currentTheme = localStorage.getItem('theme') || 'light';
+    this.currentTheme = this.getInitialTheme();
     this.init();
+  }
+
+  getInitialTheme() {
+    // Priority: localStorage > system preference > default (light)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+
+    // Check system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+
+    return 'light';
   }
 
   init() {
     this.bindEvents();
     this.applyTheme(this.currentTheme);
     this.updateUI();
+    this.watchSystemPreference();
+  }
+
+  watchSystemPreference() {
+    // Listen for system theme changes (only if user hasn't manually set a preference)
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', (e) => {
+        // Only auto-update if user hasn't manually set a theme
+        if (!localStorage.getItem('theme')) {
+          this.currentTheme = e.matches ? 'dark' : 'light';
+          this.applyTheme(this.currentTheme);
+          this.updateUI();
+        }
+      });
+    }
   }
 
   bindEvents() {

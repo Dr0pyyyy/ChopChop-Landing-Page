@@ -57,6 +57,23 @@
   justify-content: center;
   padding: 12px; /* 1.5 * 8px */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover effect */
+.currency-slider__icon:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(160, 87, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #B366FF 0%, #A057FF 100%);
+}
+
+/* Hover effect - icon glow */
+.currency-slider__icon:hover .currency-slider__icon-img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
 }
 
 /* Icon image inside - larger SVG and PNG */
@@ -72,10 +89,24 @@
   background: linear-gradient(135deg, #6B35B3 0%, #5A2D9A 100%);
 }
 
-/* Dark theme - make icons same color as page background */
-[data-theme="dark"] .currency-slider__icon-img {
-  filter: brightness(0) saturate(0) sepia(1) hue-rotate(0deg) brightness(0.1); /* Make icons dark like page background (#1a1a1a) */
+/* Dark theme hover effect */
+[data-theme="dark"] .currency-slider__icon:hover {
+  background: linear-gradient(135deg, #7B45C3 0%, #6A3DAA 100%);
+  box-shadow:
+    0 8px 25px rgba(107, 53, 179, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
 }
+
+/* Dark theme - make icons dark like page background */
+[data-theme="dark"] .currency-slider__icon-img {
+  filter: brightness(0) saturate(0) sepia(1) hue-rotate(0deg) brightness(0.1); /* Same as page background (#1a1a1a) */
+}
+
+/* Dark theme hover - icon glow effect */
+[data-theme="dark"] .currency-slider__icon:hover .currency-slider__icon-img {
+  filter: brightness(0) saturate(0) sepia(1) hue-rotate(0deg) brightness(0.1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
 
 /* Tablet and up - larger icons, slower */
 @media (min-width: 768px) {
