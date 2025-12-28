@@ -404,8 +404,10 @@
   transform-origin: center center;
   position: relative;
   filter: drop-shadow(0 0 0px rgba(160, 87, 255, 0));
-  will-change: transform, filter;
   transform: translateX(0) translateY(0) rotate(0deg) scale(0.6);
+  -webkit-transform: translateX(0) translateY(0) rotate(0deg) scale(0.6);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Explicitly disable any pseudo-elements on cards */
@@ -427,16 +429,24 @@
 /* Animated state - cards split apart */
 .how-it-works__feature--animate .how-it-works__single-img #card-left {
   transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
+  -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
   filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
   animation: card-float-left 4s ease-in-out infinite;
+  -webkit-animation: card-float-left 4s ease-in-out infinite;
   animation-delay: 800ms;
+  -webkit-animation-delay: 800ms;
 }
 
 .how-it-works__feature--animate .how-it-works__single-img #card-right {
   transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
+  -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
   filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
   animation: card-float-right 3.5s ease-in-out infinite;
+  -webkit-animation: card-float-right 3.5s ease-in-out infinite;
   animation-delay: 600ms;
+  -webkit-animation-delay: 600ms;
 }
 
 /* Mobile only - larger cards */
@@ -448,34 +458,68 @@
 
   .how-it-works__feature--animate .how-it-works__single-img #card-left {
     transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.9);
+    -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.9);
     animation: card-float-left-mobile 4s ease-in-out infinite;
+    -webkit-animation: card-float-left-mobile 4s ease-in-out infinite;
   }
 
   .how-it-works__feature--animate .how-it-works__single-img #card-right {
     transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.9);
+    -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.9);
     animation: card-float-right-mobile 3.5s ease-in-out infinite;
+    -webkit-animation: card-float-right-mobile 3.5s ease-in-out infinite;
   }
 
   /* Mobile keyframes with larger scale */
   @keyframes card-float-left-mobile {
     0%, 100% {
       transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.9);
+      -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.9);
       filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+      -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
     }
     50% {
       transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.92);
+      -webkit-transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.92);
       filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+      -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+    }
+  }
+
+  @-webkit-keyframes card-float-left-mobile {
+    0%, 100% {
+      -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.9);
+      -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+    }
+    50% {
+      -webkit-transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.92);
+      -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
     }
   }
 
   @keyframes card-float-right-mobile {
     0%, 100% {
       transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.9);
+      -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.9);
       filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+      -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
     }
     50% {
       transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.92);
+      -webkit-transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.92);
       filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+      -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+    }
+  }
+
+  @-webkit-keyframes card-float-right-mobile {
+    0%, 100% {
+      -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.9);
+      -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+    }
+    50% {
+      -webkit-transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.92);
+      -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
     }
   }
 }
@@ -1087,22 +1131,52 @@
 @keyframes card-float-left {
   0%, 100% {
     transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
+    -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
     filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+    -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
   }
   50% {
     transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.61);
+    -webkit-transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.61);
     filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+    -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+  }
+}
+
+@-webkit-keyframes card-float-left {
+  0%, 100% {
+    -webkit-transform: translateX(-35px) translateY(15px) rotate(-8deg) scale(0.6);
+    -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  }
+  50% {
+    -webkit-transform: translateX(-38px) translateY(18px) rotate(-9deg) scale(0.61);
+    -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
   }
 }
 
 @keyframes card-float-right {
   0%, 100% {
     transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
+    -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
     filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+    -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
   }
   50% {
     transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.61);
+    -webkit-transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.61);
     filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+    -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
+  }
+}
+
+@-webkit-keyframes card-float-right {
+  0%, 100% {
+    -webkit-transform: translateX(35px) translateY(-15px) rotate(8deg) scale(0.6);
+    -webkit-filter: drop-shadow(0 0 12px rgba(160, 87, 255, 0.4)) brightness(1.05);
+  }
+  50% {
+    -webkit-transform: translateX(38px) translateY(-18px) rotate(9deg) scale(0.61);
+    -webkit-filter: drop-shadow(0 0 16px rgba(160, 87, 255, 0.5)) brightness(1.08);
   }
 }
 
