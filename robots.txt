@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chopchop.cz/sitemap.xml
+Sitemap: https://getchopchop.net/sitemap.xml

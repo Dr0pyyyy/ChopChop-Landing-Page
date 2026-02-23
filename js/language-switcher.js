@@ -57,6 +57,7 @@ class LanguageSwitcher {
         'feature-split-bills-expanded-1': 'ChopChop takes care of the math for you — it automatically figures out who owes whom and splits every bill fairly.',
         'feature-split-bills-expanded-2': 'Whether it\'s dinner with friends, a group trip, or shared rent, you\'ll always know exactly where everyone stands.',
         'feature-no-card-expanded-1': 'Setting up your account only takes a few moments, and you\'ll be ready to go right away. It\'s simple, secure, and designed to make your life easier.',
+        'footer-privacy': 'Privacy Policy',
       },
       cz: {
         // Navigace
@@ -112,6 +113,7 @@ class LanguageSwitcher {
         'feature-split-bills-expanded-1': 'ChopChop se postará o matematiku za vás, automaticky zjistí, kdo komu dluží a spravedlivě rozdělí každý účet.',
         'feature-split-bills-expanded-2': 'Ať už jde o večeři s přáteli, skupinový výlet nebo sdílený nájem, vždy budete přesně vědět, jak na tom všichni jsou.',
         'feature-no-card-expanded-1': 'Nastavení účtu trvá jen několik okamžiků a budete připraveni okamžitě začít. Je to jednoduché, bezpečné a navržené tak, aby vám usnadnilo život.',
+        'footer-privacy': 'Ochrana soukromí',
       }
     };
 
