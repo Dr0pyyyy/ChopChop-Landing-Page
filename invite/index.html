@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChopChop - Group Invite</title>
+
+  <!-- Open Graph for link previews -->
+  <meta property="og:title" content="You've been invited to a ChopChop group!">
+  <meta property="og:description" content="Tap to join the group and start splitting bills together.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://getchopchop.net/icons/favicon-192x192.png">
+  <meta property="og:site_name" content="ChopChop">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .invite-card {
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .invite-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+    }
+
+    .invite-card h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .invite-card p {
+      font-size: 16px;
+      color: #999;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    .btn-primary {
+      background: #A057FF;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #A057FF;
+      border: 2px solid #A057FF;
+      margin-top: 12px;
+    }
+
+    .store-links {
+      margin-top: 24px;
+    }
+
+    .store-links p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invite-card">
+    <img src="/icons/favicon-192x192.png" alt="ChopChop">
+    <h1>You've been invited!</h1>
+    <p>Someone invited you to join their ChopChop group. Open the app to accept the invitation and start splitting bills together.</p>
+
+    <a id="openAppBtn" class="btn btn-primary" href="#">Open in ChopChop</a>
+
+    <div class="store-links">
+      <p>Don't have the app yet?</p>
+      <a class="btn btn-secondary" href="https://getchopchop.net">Get ChopChop</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Extract invite ID from URL path or query param (from 404 redirect)
+      var inviteId = null;
+      var pathParts = window.location.pathname.split('/').filter(Boolean);
+      if (pathParts.length >= 2 && pathParts[0] === 'invite' && pathParts[1] !== 'index.html') {
+        inviteId = pathParts[1];
+      }
+      if (!inviteId) {
+        var params = new URLSearchParams(window.location.search);
+        inviteId = params.get('id');
+      }
+
+      if (inviteId) {
+        var openBtn = document.getElementById('openAppBtn');
+        openBtn.href = 'chopchop://invite/' + inviteId;
+      }
+    })();
+  </script>
+</body>
+</html>
