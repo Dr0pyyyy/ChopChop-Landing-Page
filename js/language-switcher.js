@@ -14,6 +14,10 @@ class LanguageSwitcher {
         'hero-headline': 'Splitting bills, made simple',
         'hero-description': 'Make every group expense effortless. With ChopChop, you\'ll always know who owes what, without the hassle, confusion, or endless calculations.',
 
+        // Store buttons
+        'hero-store-divider': 'or',
+        'hero-testflight-text': 'Want to test new features first? Join our TestFlight beta!',
+
         // How it works section
         'section-how-it-works': 'How it works',
         'feature-create-groups': 'Create groups',
@@ -69,6 +73,10 @@ class LanguageSwitcher {
         // Hero sekce
         'hero-headline': 'Rozdělení účtů, rychle a jednoduše',
         'hero-description': 'Skupinové výdaje bez starostí. S ChopChopem vždy víte, kdo komu dluží, žádné komplikace, zmatek nebo nekonečné počítání.',
+
+        // Store tlačítka
+        'hero-store-divider': 'nebo',
+        'hero-testflight-text': 'Chcete testovat nové funkce jako první? Připojte se k našemu TestFlightu!',
 
         // Jak to funguje sekce
         'section-how-it-works': 'Jak to funguje',

@@ -55,11 +55,39 @@
   outline: none;
 }
 
-/* TestFlight button styling */
+/* App Store button styling */
+.hero__appstore-link:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* Store buttons row */
+.hero__store-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* TestFlight section */
+.hero__testflight-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+.hero__testflight-text {
+  font-size: 16px;
+  color: var(--color-text);
+  opacity: 0.6;
+  margin: 0;
+}
+
 .hero__testflight-link {
-  margin-bottom: var(--spacing-4); /* Add more margin below TestFlight button */
-  align-self: center; /* Center the TestFlight button */
-  width: fit-content; /* Make button only as wide as needed */
+  align-self: center;
+  width: fit-content;
 }
 
 .hero__testflight-link:hover {
@@ -67,13 +95,6 @@
   transition: transform 0.2s ease;
 }
 
-/* Coming soon wrapper */
-.hero__coming-soon-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
-}
 
 /* Disabled state styling */
 .hero__download-link--disabled {
@@ -149,9 +170,13 @@
     gap: var(--spacing-3);
   }
 
-  .hero__coming-soon-wrapper {
+  .hero__store-buttons {
     flex-direction: row;
     gap: var(--spacing-2);
+  }
+
+  .hero__testflight-text {
+    font-size: 14px;
   }
 
   .hero__download-divider {
@@ -195,7 +220,7 @@
     gap: var(--spacing-3);
   }
 
-  .hero__coming-soon-wrapper {
+  .hero__store-buttons {
     gap: var(--spacing-3);
   }
 
