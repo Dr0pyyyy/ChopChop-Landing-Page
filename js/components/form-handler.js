@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // Send email via EmailJS
       emailjs.send('service_rsymfz9', 'template_vvy9xaf', templateParams)
         .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
 
           // Show success message
           submitButton.textContent = 'Sent successfully!';
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
           }, 3000);
 
         }, function(error) {
-          console.log('FAILED...', error);
 
           // Show error message
           submitButton.textContent = 'Error - try again';

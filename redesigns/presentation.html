@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChopChop Landing Presentation</title>
+  <style>
+    :root{--bg:#0f1020;--panel:#181a2e;--text:#f8f7ff;--muted:#aaa8c4;--accent:#9dff60;--line:rgba(255,255,255,.12)}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0f1020,#17152d 48%,#0b2230);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}.shell{padding:28px clamp(18px,4vw,64px)}header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}.brand{display:flex;gap:12px;align-items:center;font-size:24px;font-weight:1000}.brand img{width:42px;border-radius:12px}.actions{display:flex;gap:10px;flex-wrap:wrap}a,button{font:800 14px/1 ui-sans-serif,system-ui;border-radius:999px;padding:12px 16px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);text-decoration:none;cursor:pointer}.active{background:var(--accent);color:#111;border-color:transparent}.hero{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;margin:28px 0}.hero h1{font-size:clamp(42px,7vw,86px);line-height:.9;letter-spacing:-.07em;margin:0}.hero p{max-width:720px;color:var(--muted);font-size:18px;line-height:1.5}.stage{display:grid;grid-template-columns:300px 1fr;gap:18px}.notes{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:28px;padding:20px;align-self:start;position:sticky;top:18px}.notes h2{margin:0 0 12px}.notes ul{padding-left:20px;color:var(--muted);line-height:1.55}.preview{height:76vh;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:white;box-shadow:0 30px 100px rgba(0,0,0,.28)}iframe{width:100%;height:100%;border:0;background:white}.score{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.score div{border:1px solid var(--line);border-radius:18px;padding:12px;background:rgba(255,255,255,.04)}.score b{display:block;color:var(--accent);font-size:20px}@media(max-width:950px){.stage{grid-template-columns:1fr}.notes{position:static}.preview{height:70vh}.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header><div class="brand"><img src="../icons/app-icon.png" alt="">ChopChop redesign deck</div><nav class="actions" aria-label="Concept switcher"><button class="active" data-page="../index.html" data-key="optimized">Optimized original</button><button data-page="variant-aurora.html" data-key="aurora">Aurora Ledger</button><button data-page="variant-minimal.html" data-key="minimal">Quiet Split</button><button data-page="variant-neon.html" data-key="neon">Social Neon</button></nav></header>
+    <section class="hero"><div><h1>Pick the direction, not just the page.</h1><p>This mini-deck presents the optimized current landing page plus three distinctive modern redesign concepts. Open it locally and click through the variants live.</p></div><a href="../index.html">Back to repo page</a></section>
+    <main class="stage"><aside class="notes"><h2 id="conceptTitle">Optimized original</h2><p id="conceptText">The existing design, cleaned up for performance and production hygiene while keeping brand continuity.</p><ul id="conceptBullets"><li>7.8 MB inline SVG removed from HTML</li><li>Local preview redirect removed</li><li>Safer external links and lighter JS logs</li></ul><div class="score"><div><b id="perf">High</b>Perf</div><div><b id="brand">Safe</b>Brand</div><div><b id="effort">Low</b>Effort</div><div><b id="risk">Low</b>Risk</div></div></aside><section class="preview"><iframe id="preview" title="Selected ChopChop landing concept" src="../index.html"></iframe></section></main>
+  </div>
+<script>
+const concepts={
+ optimized:{title:'Optimized original',text:'The existing design, cleaned up for performance and production hygiene while keeping brand continuity.',bullets:['7.8 MB inline SVG removed from HTML','Local preview redirect removed','Safer external links and lighter JS logs'],perf:'High',brand:'Safe',effort:'Low',risk:'Low'},
+ aurora:{title:'Aurora Ledger',text:'A vibrant fintech direction: playful, premium and energetic, with a memorable hero and strong app-store conversion focus.',bullets:['Best if ChopChop should feel fresh and startup-like','Strong visual hook for social ads','Keeps clear product explanation'],perf:'High',brand:'Bold',effort:'Med',risk:'Med'},
+ minimal:{title:'Quiet Split',text:'A calm, editorial direction focused on trust, clarity and financial confidence.',bullets:['Best for credibility and mature positioning','Accessible and lightweight','Less playful, more premium'],perf:'Very high',brand:'Premium',effort:'Med',risk:'Low'},
+ neon:{title:'Social Neon',text:'A high-contrast social-first direction for younger users and viral beta campaigns.',bullets:['Most memorable and campaign-friendly','Strong dark-mode personality','Highest brand departure'],perf:'High',brand:'Loud',effort:'Med',risk:'High'}
+};
+document.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');preview.src=btn.dataset.page;const c=concepts[btn.dataset.key];conceptTitle.textContent=c.title;conceptText.textContent=c.text;conceptBullets.innerHTML=c.bullets.map(x=>`<li>${x}</li>`).join('');perf.textContent=c.perf;brand.textContent=c.brand;effort.textContent=c.effort;risk.textContent=c.risk;}));
+</script>
+</body>
+</html>

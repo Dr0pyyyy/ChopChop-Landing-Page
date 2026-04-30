@@ -42,8 +42,6 @@
       /* Do NOT apply transform: none to everything */
     `;
     document.head.appendChild(style);
-
-    console.log('iOS Safari detected - carousel animations disabled');
   }
 
 })();
@@ -86,7 +84,6 @@
   let isMenuOpen = false;
 
   // Debug for iOS
-  console.log('Menu script loaded, initial menu state:', isMenuOpen);
 
   /**
    * Opens the menu overlay with slide-in animation from right
@@ -310,7 +307,6 @@
   // Check iOS Safari - allow phone mockup animations but skip broken card animations
   const isIOSSafari = isiOSSafari();
   if (isIOSSafari) {
-    console.log('iOS Safari detected - enabling safe scroll animations');
   }
 
   // Check if Intersection Observer is supported
