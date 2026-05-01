@@ -74,18 +74,3 @@ body.menu-open .menu-overlay {
     transition-duration: 0.01ms !important;
   }
 }
-
-/* Visual polish v2: subtle depth while preserving the current layout */
-body {
-  background:
-    radial-gradient(circle at 18% 10%, rgba(160, 87, 255, 0.12), transparent 34rem),
-    radial-gradient(circle at 86% 28%, rgba(160, 87, 255, 0.08), transparent 30rem),
-    var(--color-background);
-}
-
-[data-theme="dark"] body {
-  background:
-    radial-gradient(circle at 18% 10%, rgba(179, 102, 255, 0.16), transparent 34rem),
-    radial-gradient(circle at 86% 28%, rgba(179, 102, 255, 0.10), transparent 30rem),
-    var(--color-background);
-}

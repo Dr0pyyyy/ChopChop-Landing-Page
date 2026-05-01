@@ -257,35 +257,3 @@
     height: 72px; /* 9 * 8px */
   }
 }
-
-/* Visual polish v2 */
-.hero__app-icon {
-  box-shadow: 0 24px 64px rgba(160, 87, 255, 0.24);
-}
-
-.hero__headline {
-  letter-spacing: -0.04em;
-  text-wrap: balance;
-}
-
-.hero__description {
-  text-wrap: balance;
-}
-
-.hero__download-link {
-  transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
-}
-
-.hero__download-link:hover {
-  transform: translateY(-3px);
-  filter: drop-shadow(0 14px 24px rgba(44, 44, 44, 0.14));
-}
-
-.hero__download-link--disabled:hover {
-  transform: none;
-  filter: none;
-}
-
-.hero__testflight-text {
-  max-width: 320px;
-}

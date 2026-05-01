@@ -178,24 +178,3 @@
     max-width: 800px;
   }
 }
-/* Visual polish v2 */
-.join-us__form {
-  padding: clamp(20px, 4vw, 36px);
-  border: 1px solid rgba(160, 87, 255, 0.12);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.48);
-  box-shadow: 0 22px 70px rgba(44, 44, 44, 0.06);
-}
-
-.join-us__input {
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.join-us__input:focus {
-  box-shadow: 0 0 0 4px rgba(160, 87, 255, 0.12);
-}
-
-[data-theme="dark"] .join-us__form {
-  background: rgba(255, 255, 255, 0.045);
-  border-color: rgba(179, 102, 255, 0.18);
-}
