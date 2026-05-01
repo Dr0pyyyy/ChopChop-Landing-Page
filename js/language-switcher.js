@@ -205,8 +205,10 @@ class LanguageSwitcher {
     const desktopText = document.querySelector('.language-switcher__text');
 
     if (desktopFlag && desktopText) {
-      desktopFlag.textContent = isCzech ? '🇨🇿' : '🇬🇧';
+      desktopFlag.src = isCzech ? 'icons/czech-flag.svg' : 'icons/US-flag.svg';
+      desktopFlag.alt = isCzech ? 'Czech' : 'English';
       desktopText.textContent = isCzech ? 'CZ' : 'EN';
+      desktopFlag.closest('button')?.setAttribute('aria-label', isCzech ? 'Přepnout jazyk na angličtinu' : 'Switch language to Czech');
     }
 
     // Update mobile switcher
@@ -214,8 +216,10 @@ class LanguageSwitcher {
     const mobileText = document.querySelector('.menu-overlay__language-text');
 
     if (mobileFlag && mobileText) {
-      mobileFlag.textContent = isCzech ? '🇨🇿' : '🇬🇧';
+      mobileFlag.src = isCzech ? 'icons/czech-flag.svg' : 'icons/US-flag.svg';
+      mobileFlag.alt = isCzech ? 'Czech' : 'English';
       mobileText.textContent = isCzech ? 'CZ / EN' : 'EN / CZ';
+      mobileFlag.closest('button')?.setAttribute('aria-label', isCzech ? 'Přepnout jazyk na angličtinu' : 'Switch language to Czech');
     }
   }
 }
