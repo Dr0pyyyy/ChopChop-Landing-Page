@@ -1,0 +1,23 @@
+name: Deploy landing page to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        env:
+          SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/vps && chmod 600 ~/.ssh/vps
+          ssh-keyscan -H 135.181.31.243 >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -az --delete -e "ssh -i ~/.ssh/vps" \
+            --exclude '.git' --exclude '.github' --exclude '.claude' --exclude 'CNAME' \
+            ./ root@135.181.31.243:/srv/www/landing/
