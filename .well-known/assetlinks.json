@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.getchopchop.app",
+      "sha256_cert_fingerprints": [
+        "5D:38:C1:43:BC:74:EC:02:CD:68:2A:F5:9B:43:6B:DC:9F:AC:50:3F:2D:BE:F0:BD:60:68:0E:91:53:A2:54:D6"
+      ]
+    }
+  }
+]
