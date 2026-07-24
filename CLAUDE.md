@@ -7,7 +7,7 @@ Static marketing website at chopchop.cz. No build process, no framework.
 ## Tech Stack
 - Vanilla HTML/CSS/JavaScript
 - EmailJS for form submission (service: `service_rsymfz9`)
-- GitHub Pages hosting (CNAME: chopchop.cz)
+- Hosting: self-managed VPS (Hetzner), served by Caddy at chopchop.cz — deployed via GitHub Actions rsync (`.github/workflows/deploy.yml`)
 
 ## CSS Architecture
 
@@ -58,11 +58,12 @@ css/
 
 ### File Structure
 ```
+script.js                # Entry point (loaded from index.html)
 js/
-  main.js               # Entry point
   language-switcher.js   # i18n (EN/CZ)
-  theme-switcher.js      # Dark/light mode
-  parallax.js            # Scroll animations
+  theme-switcher.js       # Dark/light mode
+  parallax.js             # Scroll animations
+  mockup-switcher.js      # Swaps mockup images by theme + language
   components/
     form-handler.js      # EmailJS form submission
 ```
@@ -92,4 +93,4 @@ js/
 - Structured data (Organization + Website schema)
 - hreflang tags for EN/CZ
 - robots.txt + sitemap.xml
-- .htaccess: gzip, caching (1yr static), security headers, HTTPS redirect
+- gzip, caching, security headers, HTTPS redirect handled by Caddy on the VPS
