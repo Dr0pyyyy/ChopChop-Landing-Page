@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Prepare email data
       const templateParams = {
-        to_email: 'chopchop.devv@gmail.com',
+        to_email: 'adamkoutny12345@seznam.cz',
         from_email: form.email.value,
         occupation: form.occupation.value,
         help: form.help.value,
