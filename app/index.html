@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Download ChopChop</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/favicon-192x192.png">
+
+  <script>
+    // Target of the printed QR code: sends phones straight to their store.
+    // Printed codes can't be changed, so this URL must stay stable; change
+    // the destinations here instead. Optional ?src=<campaign> tells codes apart.
+    (function () {
+      var APP_STORE = 'https://apps.apple.com/cz/app/chopchop-splitting-bills/id6751435181';
+      var PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.getchopchop.app';
+
+      var ua = navigator.userAgent || '';
+      // iPadOS reports itself as a Mac; touch support gives it away.
+      var isIos = /iPad|iPhone|iPod/.test(ua) ||
+        (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/i.test(ua);
+
+      var src = (new URLSearchParams(location.search).get('src') || 'qr')
+        .replace(/[^\w-]/g, '').slice(0, 40) || 'qr';
+
+      var target = null;
+      if (isIos) {
+        target = APP_STORE;
+      } else if (isAndroid) {
+        target = PLAY_STORE + '&referrer=' +
+          encodeURIComponent('utm_source=' + src + '&utm_medium=qr');
+      }
+      window.__ccStore = { target: target, src: src,
+        platform: isIos ? 'ios' : isAndroid ? 'android' : 'other' };
+      if (target) document.documentElement.className = 'redirecting';
+
+      var done = false;
+      window.__ccGo = function () {
+        if (done || !target) return;
+        done = true;
+        location.replace(target);
+      };
+      // Never hold the visitor hostage to analytics.
+      if (target) setTimeout(window.__ccGo, 800);
+    })();
+  </script>
+
+  <!-- Umami (stats.chopchop.cz): counts scans per platform/campaign, then redirects. -->
+  <script defer src="https://stats.chopchop.cz/script.js"
+          data-website-id="966eebd0-33ef-4d1b-93ad-51437d8732ce"
+          data-auto-track="false"
+          onload="(function(s){try{umami.track('qr-scan',{platform:s.platform,src:s.src}).then(__ccGo,__ccGo)}catch(e){__ccGo()}})(window.__ccStore)"
+          onerror="__ccGo()"></script>
+
+  <style>
+    :root {
+      --bg: #F2F2F2;
+      --text: #2C2C2C;
+      --muted: rgba(44, 44, 44, 0.6);
+      --brand: #A057FF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #e0e0e0;
+        --muted: rgba(224, 224, 224, 0.6);
+        --brand: #B366FF;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+    main { max-width: 420px; }
+    .icon { width: 96px; height: 96px; border-radius: 22px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 16px 0 8px; }
+    p { margin: 0 0 24px; color: var(--muted); }
+    .stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .stores img { height: 48px; width: auto; display: block; }
+    .stores a { transition: transform 0.2s ease; }
+    .stores a:hover { transform: translateY(-2px); }
+    .home { display: inline-block; margin-top: 24px; color: var(--brand); text-decoration: none; font-weight: 500; }
+    /* Phones are being redirected: show only a short hint, not the full page. */
+    .redirecting .stores, .redirecting .home, .redirecting .lead { display: none; }
+    .wait { display: none; }
+    .redirecting .wait { display: block; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="/icons/app-icon.webp" width="96" height="96" alt="ChopChop app icon">
+    <h1 data-cs="Stáhni si ChopChop">Get ChopChop</h1>
+    <p class="lead" data-cs="Dělení účtů bez starostí. Vyber si svůj obchod.">Splitting bills, made simple. Pick your store.</p>
+    <p class="wait" data-cs="Otevírám obchod s aplikacemi…">Opening the app store…</p>
+    <div class="stores">
+      <a href="https://apps.apple.com/cz/app/chopchop-splitting-bills/id6751435181" rel="noopener">
+        <img src="/icons/app-store.png" width="192" height="57" alt="Download on the App Store">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.getchopchop.app" rel="noopener">
+        <img src="/icons/google-play.png" width="192" height="57" alt="Get it on Google Play">
+      </a>
+    </div>
+    <a class="home" href="/" data-cs="Více o ChopChop">More about ChopChop</a>
+  </main>
+  <script>
+    if (/^cs|^sk/i.test(navigator.language || '')) {
+      document.documentElement.lang = 'cs';
+      document.querySelectorAll('[data-cs]').forEach(function (el) {
+        el.textContent = el.getAttribute('data-cs');
+      });
+    }
+  </script>
+</body>
+</html>
