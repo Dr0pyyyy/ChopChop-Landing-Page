@@ -80,7 +80,7 @@
     <a href="/" class="privacy__back">&larr; Back to ChopChop</a>
 
     <h1>Privacy Policy</h1>
-    <p class="privacy__date">Last updated: August 21, 2026</p>
+    <p class="privacy__date">Last updated: October 14, 2026</p>
 
     <p>ChopChop ("we", "our", or "us") operates the ChopChop mobile application. This Privacy Policy explains how we collect, use, and protect your personal information when you use our app.</p>
 
@@ -104,6 +104,7 @@
       <li>To send push notifications about group activity (with your permission)</li>
       <li>To provide customer support through bug reports</li>
       <li>To scan receipts using AI-powered text extraction</li>
+      <li>To answer and carry out your requests to Choppy, the in-app AI assistant, if you use it (see section 9)</li>
     </ul>
     <p>We do <strong>not</strong> use your data for advertising, tracking, analytics, or marketing purposes. We do <strong>not</strong> sell, share, or provide your data to third parties for their own purposes.</p>
 
@@ -111,7 +112,12 @@
     <p>We use the following third-party services to operate the app:</p>
     <ul>
       <li><strong>Hetzner Online GmbH</strong> — Hosting provider for our servers, which run the database, the API and the storage of uploaded files. All servers are located within the EU.</li>
-      <li><strong>Anthropic</strong> — Receipt text extraction. Receipt images are read on your device and only the resulting text is sent from our server for processing. Your name, e-mail and account data are never included.</li>
+      <li><strong>Anthropic</strong> — AI provider for two features:
+        <ul>
+          <li><em>Receipt text extraction.</em> Receipt images are read on your device and only the resulting text is sent from our server for processing. Your name, e-mail and account data are never included.</li>
+          <li><em>Choppy, the AI assistant (optional).</em> When you use Choppy, your messages and the account data needed to answer them are sent from our server to Anthropic. See section 9 for exactly what is sent.</li>
+        </ul>
+      </li>
       <li><strong>Apple Push Notification Service (APNs)</strong> — Delivery of push notifications to iOS devices.</li>
       <li><strong>Firebase Cloud Messaging (FCM)</strong> — Delivery of push notifications to Android devices.</li>
       <li><strong>Apple Sign In / Google Sign In</strong> — Authentication providers. We only receive your name and email; we do not access any other data from these services.</li>
@@ -163,13 +169,23 @@
       <li>You can revoke notification access at any time in your Android settings, or switch the feature off in the app.</li>
     </ul>
 
-    <h2>9. Children's Privacy</h2>
+    <h2>9. Choppy, the AI Assistant (optional)</h2>
+    <p>Choppy is a chat assistant that can answer questions about your groups and act on your behalf — create a group, add people, record or delete an expense, settle up. It runs on an AI model provided by <strong>Anthropic</strong>. Choppy is optional: nothing is sent to Anthropic unless you use it. In the iOS app it is switched off by default and asks for your consent before it is turned on for the first time.</p>
+    <p>When you use Choppy, our server sends Anthropic:</p>
+    <ul>
+      <li>The messages you write or dictate to Choppy, and the earlier messages of the same conversation.</li>
+      <li>The data Choppy needs to answer or to carry out your request: names and descriptions of your groups, names of their members, expenses, amounts and settlements, your friends list (names and profile photo links), your username and e-mail address, and the e-mail address of anyone you ask Choppy to add as a friend.</li>
+    </ul>
+    <p>Your password and your IBAN are <strong>never</strong> sent to Anthropic. Anthropic processes this data only to generate Choppy's responses and does not use it to train its models.</p>
+    <p>You can turn Choppy off at any time in the app's Settings. Changes Choppy makes on your behalf are stored in your account like any change you make yourself.</p>
+
+    <h2>10. Children's Privacy</h2>
     <p>ChopChop is not intended for children under 13 years of age. We do not knowingly collect personal data from children. If you believe a child has provided us with personal information, please contact us and we will delete it.</p>
 
-    <h2>10. Changes to This Policy</h2>
+    <h2>11. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
 
-    <h2>11. Contact Us</h2>
+    <h2>12. Contact Us</h2>
     <p>If you have any questions about this Privacy Policy or our data practices, contact us at:</p>
     <ul>
       <li>Email: <a href="mailto:adamkoutny12345@seznam.cz">adamkoutny12345@seznam.cz</a></li>
